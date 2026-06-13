@@ -1,0 +1,470 @@
+<?php
+require_once __DIR__ . '/config.php';
+$db = getDB();
+
+// Get stats
+$totalMaterials = $db->query("SELECT COUNT(*) FROM materials WHERE is_published=1")->fetchColumn();
+$totalQuestions = $db->query("SELECT COUNT(*) FROM questions")->fetchColumn();
+$totalTests = $db->query("SELECT COUNT(*) FROM tests WHERE is_published=1")->fetchColumn();
+$totalUsers = $db->query("SELECT COUNT(*) FROM users")->fetchColumn();
+
+// Get categories
+$categories = $db->query("SELECT * FROM categories ORDER BY sort_order")->fetchAll();
+$listeningCats = array_filter($categories, fn($c) => $c['section'] === 'listening');
+$structureCats = array_filter($categories, fn($c) => $c['section'] === 'structure');
+$readingCats   = array_filter($categories, fn($c) => $c['section'] === 'reading');
+
+// Get featured materials (latest)
+$featuredMaterials = $db->query("
+    SELECT m.*, c.name as cat_name, c.section 
+    FROM materials m JOIN categories c ON m.category_id = c.id 
+    WHERE m.is_published=1 ORDER BY m.id DESC LIMIT 6
+")->fetchAll();
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFLMaster - Platform Belajar TOEFL Terlengkap</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.php" class="navbar-brand">
+    <div class="brand-icon">T</div>
+    TOEFLMaster
+  </a>
+
+  <ul class="navbar-nav">
+    <li><a href="index.php" class="nav-link active">Beranda</a></li>
+    <li><a href="pages/listening.php" class="nav-link">Listening</a></li>
+    <li><a href="pages/structure.php" class="nav-link">Structure</a></li>
+    <li><a href="pages/reading.php" class="nav-link">Reading</a></li>
+    <li><a href="pages/tests.php" class="nav-link">Latihan Soal</a></li>
+    <li><a href="pages/about.php" class="nav-link">Tentang</a></li>
+  </ul>
+
+  <div class="navbar-actions">
+    <?php if (isUserLoggedIn()): ?>
+      <a href="pages/dashboard.php" class="btn btn-secondary btn-sm">
+        <i class="fas fa-user"></i> Dashboard
+      </a>
+      <a href="pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
+    <?php else: ?>
+      <a href="pages/login.php" class="btn btn-secondary btn-sm">Masuk</a>
+      <a href="pages/register.php" class="btn btn-primary btn-sm">Daftar Gratis</a>
+    <?php endif; ?>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <i class="fas fa-star" style="font-size:0.7rem;"></i>
+        Platform TOEFL #1 Indonesia
+      </div>
+      <h1 class="hero-title">
+        Raih Skor TOEFL <span>Impianmu</span> Bersama Kami
+      </h1>
+      <p class="hero-subtitle">
+        Platform belajar TOEFL terlengkap dengan 12 materi terstruktur, latihan soal interaktif, mini test, dan full test 100 soal. Belajar mandiri, efektif, dan menyenangkan!
+      </p>
+      <div class="hero-actions">
+        <a href="pages/register.php" class="btn btn-primary btn-lg">
+          <i class="fas fa-rocket"></i> Mulai Belajar Gratis
+        </a>
+        <a href="pages/tests.php" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15);">
+          <i class="fas fa-play"></i> Coba Full Test
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <span class="hero-stat-num"><?= number_format($totalMaterials) ?>+</span>
+          <span class="hero-stat-label">Materi</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num"><?= number_format($totalQuestions) ?>+</span>
+          <span class="hero-stat-label">Soal Latihan</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num"><?= number_format($totalTests) ?>+</span>
+          <span class="hero-stat-label">Test Tersedia</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num"><?= number_format($totalUsers) ?>+</span>
+          <span class="hero-stat-label">Pengguna</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Visual -->
+    <div class="hero-visual">
+      <div class="score-card">
+        <div class="score-card-title">📊 TOEFL Score Summary</div>
+        <div class="score-display">
+          <div class="score-number">550</div>
+          <div>
+            <div class="score-max">/677</div>
+            <div style="color:#10B981;font-size:0.8rem;font-weight:600;margin-top:2px;">↑ +45 dari tes sebelumnya</div>
+          </div>
+        </div>
+        <div class="score-progress">
+          <div class="score-bar" style="width:81%;"></div>
+        </div>
+        <div class="section-scores">
+          <div class="section-score-item">
+            <span class="section-score-label">Listening</span>
+            <span class="section-score-val" style="color:#60A5FA;">195</span>
+          </div>
+          <div class="section-score-item">
+            <span class="section-score-label">Structure</span>
+            <span class="section-score-val" style="color:#A78BFA;">187</span>
+          </div>
+          <div class="section-score-item">
+            <span class="section-score-label">Reading</span>
+            <span class="section-score-val" style="color:#34D399;">168</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-pills">
+        <div class="feature-pill">
+          <span class="pill-dot"></span>
+          12 Materi Lengkap
+        </div>
+        <div class="feature-pill">
+          <span class="pill-dot" style="background:#F59E0B;"></span>
+          Mini Test Interaktif
+        </div>
+        <div class="feature-pill">
+          <span class="pill-dot" style="background:#A78BFA;"></span>
+          Full Test 100 Soal
+        </div>
+        <div class="feature-pill">
+          <span class="pill-dot" style="background:#60A5FA;"></span>
+          Pembahasan Lengkap
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOEFL SECTIONS -->
+<section class="section" style="background:white;">
+  <div class="section-header">
+    <div class="section-eyebrow">Bagian Materi</div>
+    <h2 class="section-title">3 Bagian Utama TOEFL ITP</h2>
+    <p class="section-subtitle">Kuasai semua bagian TOEFL dengan materi terstruktur dan latihan soal yang komprehensif.</p>
+  </div>
+
+  <div class="sections-grid">
+    <!-- Listening -->
+    <a href="pages/listening.php" class="section-card listening">
+      <div class="section-card-icon">🎧</div>
+      <div class="section-card-number">Section 1 · <?= count(iterator_to_array($listeningCats)) ?> Materi</div>
+      <h3>Listening Comprehension</h3>
+      <p>Tingkatkan kemampuan mendengarkan percakapan, ceramah, dan pengumuman dalam Bahasa Inggris dengan latihan intensif.</p>
+      <div class="section-card-meta">
+        <div class="meta-item">
+          <span class="meta-label">Soal</span>
+          <span class="meta-val">50 Items</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Durasi</span>
+          <span class="meta-val">35 Menit</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Skor Max</span>
+          <span class="meta-val">677</span>
+        </div>
+      </div>
+      <div class="btn btn-primary btn-sm" style="width:fit-content;">
+        Mulai Belajar <i class="fas fa-arrow-right" style="margin-left:6px;"></i>
+      </div>
+    </a>
+
+    <!-- Structure -->
+    <a href="pages/structure.php" class="section-card structure">
+      <div class="section-card-icon">📝</div>
+      <div class="section-card-number">Section 2 · <?= count(iterator_to_array($structureCats)) ?> Materi</div>
+      <h3>Structure & Written Expression</h3>
+      <p>Kuasai tata bahasa Inggris yang benar melalui latihan sentence completion dan error identification yang menyeluruh.</p>
+      <div class="section-card-meta">
+        <div class="meta-item">
+          <span class="meta-label">Soal</span>
+          <span class="meta-val">40 Items</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Durasi</span>
+          <span class="meta-val">25 Menit</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Skor Max</span>
+          <span class="meta-val">677</span>
+        </div>
+      </div>
+      <div class="btn btn-sm" style="background:rgba(139,92,246,0.15);color:#7C3AED;border:none;width:fit-content;padding:8px 18px;border-radius:100px;font-weight:600;font-size:0.85rem;">
+        Mulai Belajar <i class="fas fa-arrow-right" style="margin-left:6px;"></i>
+      </div>
+    </a>
+
+    <!-- Reading -->
+    <a href="pages/reading.php" class="section-card reading">
+      <div class="section-card-icon">📖</div>
+      <div class="section-card-number">Section 3 · <?= count(iterator_to_array($readingCats)) ?> Materi</div>
+      <h3>Reading Comprehension</h3>
+      <p>Tingkatkan pemahaman membaca teks akademis panjang dengan berbagai strategi efektif dan latihan soal beragam.</p>
+      <div class="section-card-meta">
+        <div class="meta-item">
+          <span class="meta-label">Soal</span>
+          <span class="meta-val">50 Items</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Durasi</span>
+          <span class="meta-val">55 Menit</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Skor Max</span>
+          <span class="meta-val">677</span>
+        </div>
+      </div>
+      <div class="btn btn-sm" style="background:rgba(16,185,129,0.15);color:#059669;border:none;width:fit-content;padding:8px 18px;border-radius:100px;font-weight:600;font-size:0.85rem;">
+        Mulai Belajar <i class="fas fa-arrow-right" style="margin-left:6px;"></i>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED MATERIALS -->
+<?php if (!empty($featuredMaterials)): ?>
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Materi Terbaru</div>
+    <h2 class="section-title">Mulai Dari Materi Ini</h2>
+    <p class="section-subtitle">Pilih materi yang ingin kamu pelajari hari ini dan tingkatkan kemampuan TOEFL-mu.</p>
+  </div>
+
+  <div class="materials-grid">
+    <?php foreach($featuredMaterials as $mat): ?>
+    <a href="pages/material.php?slug=<?= urlencode($mat['slug']) ?>" class="material-card fade-in-up">
+      <div class="material-badge badge-<?= $mat['section'] ?>">
+        <?= $mat['section'] === 'listening' ? '🎧' : ($mat['section'] === 'structure' ? '📝' : '📖') ?>
+        <?= ucfirst($mat['section']) ?>
+      </div>
+      <h4><?= sanitize($mat['title']) ?></h4>
+      <p><?= $mat['summary'] ? sanitize($mat['summary']) : 'Materi lengkap dengan penjelasan detail dan contoh soal.' ?></p>
+      <div class="material-footer">
+        <div class="material-meta">
+          <span><i class="fas fa-book"></i> <?= sanitize($mat['cat_name']) ?></span>
+        </div>
+        <span style="color:var(--primary);font-size:0.82rem;font-weight:600;">Baca <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+    <?php endforeach; ?>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <a href="pages/materials.php" class="btn btn-secondary">
+      Lihat Semua Materi <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+<?php endif; ?>
+
+<!-- FEATURES SECTION -->
+<section class="section" style="background:white;">
+  <div class="section-header">
+    <div class="section-eyebrow">Fitur Unggulan</div>
+    <h2 class="section-title">Semua yang Kamu Butuhkan</h2>
+    <p class="section-subtitle">Fitur lengkap untuk membantu kamu mencapai skor TOEFL tertinggi.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#DBEAFE;">📚</div>
+      <h4>12 Materi Terstruktur</h4>
+      <p>Materi lengkap mencakup semua aspek TOEFL, dari level dasar hingga lanjutan, dengan penjelasan dan contoh yang mudah dipahami.</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#EDE9FE;">✏️</div>
+      <h4>Latihan Per-Materi</h4>
+      <p>Setiap materi dilengkapi dengan latihan soal yang relevan untuk mengukur pemahaman kamu secara langsung.</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#D1FAE5;">⚡</div>
+      <h4>Mini Test</h4>
+      <p>Uji kemampuan dengan mini test 10-15 soal yang terfokus pada bagian tertentu. Ideal untuk latihan harian yang singkat.</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#FEF3C7;">🏆</div>
+      <h4>Full Test (100 Soal)</h4>
+      <p>Simulasi TOEFL sesungguhnya dengan 100 soal, timer real-time, dan penilaian skor standar TOEFL ITP (200-677).</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#FCE7F3;">💡</div>
+      <h4>Pembahasan Lengkap</h4>
+      <p>Setiap jawaban dilengkapi penjelasan mendalam mengapa jawaban benar, membantu kamu belajar dari setiap kesalahan.</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#E0F2FE;">📊</div>
+      <h4>Tracking Progres</h4>
+      <p>Pantau perkembangan skor dan capaian belajarmu dari waktu ke waktu melalui dashboard personal yang informatif.</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#F0FDF4;">🎯</div>
+      <h4>Prediksi Skor TOEFL</h4>
+      <p>Setelah full test, dapatkan prediksi skor TOEFL ITP-mu berdasarkan performa di setiap bagian (skala 200–677).</p>
+    </div>
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon" style="background:#FFF7ED;">🔊</div>
+      <h4>Audio Listening</h4>
+      <p>Soal listening dilengkapi audio asli untuk melatih kemampuan mendengar dan memahami percakapan bahasa Inggris.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCORE BAND -->
+<section class="score-band-section">
+  <div class="score-band-grid">
+    <div>
+      <div class="section-eyebrow" style="color:#60A5FA;background:rgba(37,99,235,0.15);">Konversi Skor</div>
+      <h2 class="section-title" style="color:white;">Skala Skor TOEFL ITP</h2>
+      <p class="section-subtitle" style="text-align:left;">Pahami target skor TOEFL ITP yang kamu butuhkan berdasarkan kebutuhanmu.</p>
+      <br>
+      <p style="color:#94A3B8;font-size:0.9rem;line-height:1.7;">
+        TOEFL ITP menggunakan skala skor <strong style="color:white;">200–677</strong>. Skor dihitung dari rata-rata tiga bagian (Listening, Structure, Reading) yang masing-masing dikonversi ke skala standar.
+      </p>
+    </div>
+    <div>
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Skor TOEFL</th>
+            <th>Level</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>600 – 677</td>
+            <td><span class="level-badge" style="background:rgba(16,185,129,0.2);color:#34D399;">Excellent</span></td>
+            <td>Master / PhD program</td>
+          </tr>
+          <tr>
+            <td>550 – 599</td>
+            <td><span class="level-badge" style="background:rgba(37,99,235,0.2);color:#60A5FA;">Advanced</span></td>
+            <td>S2 / Beasiswa Internasional</td>
+          </tr>
+          <tr>
+            <td>500 – 549</td>
+            <td><span class="level-badge" style="background:rgba(124,58,237,0.2);color:#A78BFA;">Upper-Int</span></td>
+            <td>S1 / Penerimaan Umum</td>
+          </tr>
+          <tr>
+            <td>450 – 499</td>
+            <td><span class="level-badge" style="background:rgba(245,158,11,0.2);color:#FCD34D;">Intermediate</span></td>
+            <td>Persyaratan Minimum S1</td>
+          </tr>
+          <tr>
+            <td>< 450</td>
+            <td><span class="level-badge" style="background:rgba(239,68,68,0.2);color:#FCA5A5;">Beginner</span></td>
+            <td>Perlu Persiapan Lebih</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="section" style="background:linear-gradient(135deg,#EFF6FF,#F5F3FF);text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <div class="section-eyebrow">Ayo Mulai!</div>
+    <h2 class="section-title">Siap Raih Skor TOEFL Terbaikmu?</h2>
+    <p class="section-subtitle">Bergabung sekarang dan akses semua materi, latihan, serta full test secara gratis.</p>
+    <br><br>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="pages/register.php" class="btn btn-primary btn-lg">
+        <i class="fas fa-user-plus"></i> Daftar Sekarang — Gratis!
+      </a>
+      <a href="pages/tests.php" class="btn btn-secondary btn-lg">
+        <i class="fas fa-list-check"></i> Lihat Latihan Soal
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="brand-icon">T</div>
+        <div class="footer-brand-name">TOEFLMaster</div>
+      </div>
+      <p class="footer-desc">Platform belajar TOEFL terlengkap di Indonesia. Kuasai Listening, Structure, dan Reading dengan materi dan latihan soal berkualitas tinggi.</p>
+      <div style="display:flex;gap:10px;">
+        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.3)';this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#94A3B8';"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.3)';this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#94A3B8';"><i class="fab fa-instagram"></i></a>
+        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.3)';this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#94A3B8';"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div>
+      <h5>Materi</h5>
+      <div class="footer-links">
+        <a href="pages/listening.php">Listening Comprehension</a>
+        <a href="pages/structure.php">Structure & Written Expression</a>
+        <a href="pages/reading.php">Reading Comprehension</a>
+        <a href="pages/materials.php">Semua Materi</a>
+      </div>
+    </div>
+    <div>
+      <h5>Latihan</h5>
+      <div class="footer-links">
+        <a href="pages/tests.php?type=mini">Mini Test</a>
+        <a href="pages/tests.php?type=full">Full Test (100 Soal)</a>
+        <a href="pages/tests.php">Semua Latihan</a>
+      </div>
+    </div>
+    <div>
+      <h5>Akun</h5>
+      <div class="footer-links">
+        <a href="pages/register.php">Daftar</a>
+        <a href="pages/login.php">Masuk</a>
+        <a href="pages/dashboard.php">Dashboard</a>
+        <a href="pages/about.php">Tentang Platform</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <?= date('Y') ?> TOEFLMaster. Dibuat untuk keperluan akademis.</p>
+    <p style="color:#475569;">Designed with ❤️ for TOEFL Learners</p>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Fade in animation on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) el.target.style.opacity = '1';
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in-up').forEach(el => {
+  el.style.opacity = '0';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
