@@ -28,13 +28,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $explanation    = trim($_POST['explanation'] ?? '') ?: null;
     $difficulty     = $_POST['difficulty'] ?? 'medium';
 
+    $audio_file = null;
     if ($id) {
-        $db->prepare("UPDATE questions SET section=?,category_id=?,material_id=?,question_text=?,passage_text=?,option_a=?,option_b=?,option_c=?,option_d=?,correct_answer=?,explanation=?,difficulty=? WHERE id=?")
-           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty,$id]);
+        $stmtAudio = $db->prepare("SELECT audio_file FROM questions WHERE id=?");
+        $stmtAudio->execute([$id]);
+        $existing = $stmtAudio->fetch();
+        $audio_file = $existing['audio_file'] ?? null;
+    }
+
+    if (isset($_FILES['audio_file']) && $_FILES['audio_file']['error'] === UPLOAD_ERR_OK) {
+        $ext = pathinfo($_FILES['audio_file']['name'], PATHINFO_EXTENSION);
+        $newname = 'audio_' . time() . '_' . rand(1000,9999) . '.' . $ext;
+        if (!is_dir(UPLOAD_PATH . 'audio')) mkdir(UPLOAD_PATH . 'audio', 0777, true);
+        move_uploaded_file($_FILES['audio_file']['tmp_name'], UPLOAD_PATH . 'audio/' . $newname);
+        $audio_file = 'audio/' . $newname;
+    }
+
+    if ($id) {
+        $db->prepare("UPDATE questions SET section=?,category_id=?,material_id=?,question_text=?,passage_text=?,option_a=?,option_b=?,option_c=?,option_d=?,correct_answer=?,explanation=?,difficulty=?,audio_file=? WHERE id=?")
+           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty,$audio_file,$id]);
         flashMessage('success','Soal berhasil diperbarui.');
     } else {
-        $db->prepare("INSERT INTO questions (section,category_id,material_id,question_text,passage_text,option_a,option_b,option_c,option_d,correct_answer,explanation,difficulty) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")
-           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty]);
+        $db->prepare("INSERT INTO questions (section,category_id,material_id,question_text,passage_text,option_a,option_b,option_c,option_d,correct_answer,explanation,difficulty,audio_file) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)")
+           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty,$audio_file]);
         flashMessage('success','Soal berhasil ditambahkan ke bank soal.');
     }
     redirect(SITE_URL.'/admin/pages/questions.php');
@@ -141,7 +157,7 @@ include '../includes/header.php';
     <i class="fas fa-arrow-left"></i> Kembali ke Bank Soal
   </a>
 </div>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start;">
   <div style="display:flex;flex-direction:column;gap:20px;">
 
@@ -156,6 +172,16 @@ include '../includes/header.php';
         <div class="form-group">
           <label class="form-label">Teks Pertanyaan <span style="color:#EF4444;">*</span></label>
           <textarea name="question_text" class="form-control" rows="4" placeholder="Tulis pertanyaan dengan jelas dan lengkap..." required><?= sanitize($q['question_text']) ?></textarea>
+        </div>
+
+        <div class="form-group" id="audioUploadGroup" style="<?= $q['section'] !== 'listening' && empty($q['audio_file']) ? 'display:none;' : '' ?>">
+          <label class="form-label">File Audio (Untuk soal Listening)</label>
+          <?php if(!empty($q['audio_file'])): ?>
+            <div style="margin-bottom:8px;">
+              <audio controls style="height:36px;width:100%;max-width:300px;"><source src="<?= UPLOAD_URL . $q['audio_file'] ?>"></audio>
+            </div>
+          <?php endif; ?>
+          <input type="file" name="audio_file" class="form-control" accept="audio/*">
         </div>
 
         <label class="form-label" style="margin-bottom:12px;">Pilihan Jawaban <span style="color:#EF4444;">*</span></label>
@@ -239,6 +265,19 @@ function highlightCorrect() {
   if (checked) document.getElementById('row-'+checked.value)?.classList.add('correct');
 }
 highlightCorrect();
+
+// Show/hide audio upload based on section
+document.getElementById('sectionSel')?.addEventListener('change', function(e) {
+  const audioGroup = document.getElementById('audioUploadGroup');
+  if(e.target.value === 'listening') {
+    audioGroup.style.display = 'block';
+  } else {
+    // Only hide if there's no existing audio file, otherwise they might get confused why it disappeared
+    <?php if(empty($q['audio_file'])): ?>
+    audioGroup.style.display = 'none';
+    <?php endif; ?>
+  }
+});
 </script>
 <?php endif; ?>
 <?php include '../includes/footer.php'; ?>
