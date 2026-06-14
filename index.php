@@ -49,7 +49,12 @@ $featuredMaterials = $db->query("
   </ul>
 
   <div class="navbar-actions">
-    <?php if (isUserLoggedIn()): ?>
+    <?php if (isAdminLoggedIn()): ?>
+      <a href="admin/index.php" class="btn btn-secondary btn-sm">
+        <i class="fas fa-user-shield"></i> Admin Panel
+      </a>
+      <a href="pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
+    <?php elseif (isUserLoggedIn()): ?>
       <a href="pages/dashboard.php" class="btn btn-secondary btn-sm">
         <i class="fas fa-user"></i> Dashboard
       </a>

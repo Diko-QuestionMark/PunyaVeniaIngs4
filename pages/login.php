@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/config.php';
+if (isAdminLoggedIn()) redirect(SITE_URL.'/admin/index.php');
 if (isUserLoggedIn()) redirect(SITE_URL.'/pages/dashboard.php');
 
 $error = '';
