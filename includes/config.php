@@ -9,7 +9,14 @@ define('DB_PASS', '');
 define('DB_NAME', 'toefl_platform');
 
 define('SITE_NAME', 'TOEFLMaster');
-define('SITE_URL', 'http://localhost/toefl-project');
+
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$doc_root = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$base_dir = str_replace('\\', '/', dirname(__DIR__));
+$relative_path = str_replace($doc_root, '', $base_dir);
+
+define('SITE_URL', $protocol . '://' . $host . $relative_path);
 define('UPLOAD_PATH', __DIR__ . '/../uploads/');
 define('UPLOAD_URL', SITE_URL . '/uploads/');
 
