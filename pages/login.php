@@ -8,9 +8,22 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     $login    = trim($_POST['login'] ?? '');
     $password = $_POST['password'] ?? '';
     if ($login && $password) {
-        $stmt = $db->prepare("SELECT * FROM users WHERE username=? OR email=?");
-        $stmt->execute([$login,$login]);
-        $user = $stmt->fetch();
+        // Cek Admin Dulu
+        $stmtAdmin = $db->prepare("SELECT * FROM admins WHERE username=? OR email=?");
+        $stmtAdmin->execute([$login, $login]);
+        $admin = $stmtAdmin->fetch();
+
+        if ($admin && $password === $admin['password']) {
+            $_SESSION['admin_id'] = $admin['id'];
+            $_SESSION['admin_username'] = $admin['username'];
+            redirect(SITE_URL . '/admin/index.php');
+        }
+
+        // Jika bukan admin, cek User biasa
+        $stmtUser = $db->prepare("SELECT * FROM users WHERE username=? OR email=?");
+        $stmtUser->execute([$login, $login]);
+        $user = $stmtUser->fetch();
+
         if ($user && $password === $user['password']) {
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];

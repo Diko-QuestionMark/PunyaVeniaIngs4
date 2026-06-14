@@ -68,7 +68,7 @@ function requireUserLogin() {
 
 function requireAdminLogin() {
     if (!isAdminLoggedIn()) {
-        header('Location: ' . SITE_URL . '/admin/login.php');
+        header('Location: ' . SITE_URL . '/pages/login.php');
         exit;
     }
 }
