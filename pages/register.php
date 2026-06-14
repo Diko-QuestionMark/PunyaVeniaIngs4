@@ -25,9 +25,8 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         if ($chk->fetch()) {
             $error = 'Username atau email sudah digunakan.';
         } else {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
             $db->prepare("INSERT INTO users (full_name,username,email,password) VALUES (?,?,?,?)")
-               ->execute([$full_name,$username,$email,$hash]);
+               ->execute([$full_name,$username,$email,$password]);
             $uid = $db->lastInsertId();
             $_SESSION['user_id'] = $uid;
             $_SESSION['username'] = $username;

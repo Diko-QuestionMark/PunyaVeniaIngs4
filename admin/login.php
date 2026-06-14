@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $db->prepare("SELECT * FROM admins WHERE username = ? OR email = ?");
         $stmt->execute([$username, $username]);
         $admin = $stmt->fetch();
-        if ($admin && password_verify($password, $admin['password'])) {
+        if ($admin && $password === $admin['password']) {
             $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['admin_username'] = $admin['username'];
             redirect(SITE_URL . '/admin/index.php');

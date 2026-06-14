@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         $stmt = $db->prepare("SELECT * FROM users WHERE username=? OR email=?");
         $stmt->execute([$login,$login]);
         $user = $stmt->fetch();
-        if ($user && password_verify($password,$user['password'])) {
+        if ($user && $password === $user['password']) {
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];
             $db->prepare("UPDATE users SET last_login=NOW() WHERE id=?")->execute([$user['id']]);

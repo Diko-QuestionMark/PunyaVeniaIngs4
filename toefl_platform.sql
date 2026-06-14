@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `created_at`) VALUES
-(1, 'admin', 'admin@toeflplatform.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', '2026-06-13 12:19:28');
+(1, 'admin', 'admin@toeflplatform.com', 'admin123', 'Administrator', '2026-06-13 12:19:28');
 
 -- --------------------------------------------------------
 
