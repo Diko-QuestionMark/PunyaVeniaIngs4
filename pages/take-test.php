@@ -259,5 +259,6 @@ document.getElementById('testForm').addEventListener('submit', () => {
 
 startTimer();
 </script>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

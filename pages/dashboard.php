@@ -31,22 +31,7 @@ $availableTests = $db->query("SELECT * FROM tests WHERE is_published=1 ORDER BY 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<nav class="navbar scrolled">
-  <a href="<?= SITE_URL ?>/index.php" class="navbar-brand">
-    <div class="brand-icon">T</div>TOEFLMaster
-  </a>
-  <ul class="navbar-nav">
-    <li><a href="<?= SITE_URL ?>/index.php" class="nav-link">Beranda</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/listening.php" class="nav-link">Listening</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/structure.php" class="nav-link">Structure</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/reading.php" class="nav-link">Reading</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/tests.php" class="nav-link">Latihan Soal</a></li>
-  </ul>
-  <div class="navbar-actions">
-    <span style="font-size:0.85rem;color:#64748B;">Halo, <strong><?= sanitize($user['full_name'] ?: $user['username']) ?></strong>!</span>
-    <a href="<?= SITE_URL ?>/pages/logout.php" class="btn btn-secondary btn-sm">Keluar</a>
-  </div>
-</nav>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <div style="padding-top:90px;max-width:1200px;margin:0 auto;padding-left:5%;padding-right:5%;padding-bottom:80px;">
 
@@ -161,5 +146,6 @@ $availableTests = $db->query("SELECT * FROM tests WHERE is_published=1 ORDER BY 
     </div>
   </div>
 </div>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

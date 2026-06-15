@@ -157,5 +157,6 @@ const ti = setInterval(()=>{
 </script>
 <?php endif; ?>
 </div>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

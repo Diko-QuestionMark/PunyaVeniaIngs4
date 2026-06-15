@@ -33,22 +33,7 @@ $secLabel = ['listening'=>'🎧 Listening','structure'=>'📝 Structure','readin
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<nav class="navbar scrolled">
-  <a href="<?= SITE_URL ?>/index.php" class="navbar-brand"><div class="brand-icon">T</div>TOEFLMaster</a>
-  <ul class="navbar-nav">
-    <li><a href="<?= SITE_URL ?>/index.php" class="nav-link">Beranda</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/<?= $material['section'] ?>.php" class="nav-link active"><?= $secLabel ?></a></li>
-    <li><a href="<?= SITE_URL ?>/pages/tests.php" class="nav-link">Latihan Soal</a></li>
-  </ul>
-  <div class="navbar-actions">
-    <?php if(isUserLoggedIn()): ?>
-    <a href="<?= SITE_URL ?>/pages/dashboard.php" class="btn btn-secondary btn-sm">Dashboard</a>
-    <?php else: ?>
-    <a href="<?= SITE_URL ?>/pages/login.php" class="btn btn-secondary btn-sm">Masuk</a>
-    <a href="<?= SITE_URL ?>/pages/register.php" class="btn btn-primary btn-sm">Daftar</a>
-    <?php endif; ?>
-  </div>
-</nav>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <div class="page-layout">
   <!-- SIDEBAR -->
@@ -152,5 +137,6 @@ $secLabel = ['listening'=>'🎧 Listening','structure'=>'📝 Structure','readin
     </div>
   </main>
 </div>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

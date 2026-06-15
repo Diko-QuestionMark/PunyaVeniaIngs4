@@ -33,38 +33,10 @@ $featuredMaterials = $db->query("
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <a href="index.php" class="navbar-brand">
-    <div class="brand-icon">T</div>
-    TOEFLMaster
-  </a>
-
-  <ul class="navbar-nav">
-    <li><a href="index.php" class="nav-link active">Beranda</a></li>
-    <li><a href="pages/listening.php" class="nav-link">Listening</a></li>
-    <li><a href="pages/structure.php" class="nav-link">Structure</a></li>
-    <li><a href="pages/reading.php" class="nav-link">Reading</a></li>
-    <li><a href="pages/tests.php" class="nav-link">Latihan Soal</a></li>
-    <li><a href="pages/about.php" class="nav-link">Tentang</a></li>
-  </ul>
-
-  <div class="navbar-actions">
-    <?php if (isAdminLoggedIn()): ?>
-      <a href="admin/index.php" class="btn btn-secondary btn-sm">
-        <i class="fas fa-user-shield"></i> Admin Panel
-      </a>
-      <a href="pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
-    <?php elseif (isUserLoggedIn()): ?>
-      <a href="pages/dashboard.php" class="btn btn-secondary btn-sm">
-        <i class="fas fa-user"></i> Dashboard
-      </a>
-      <a href="pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
-    <?php else: ?>
-      <a href="pages/login.php" class="btn btn-secondary btn-sm">Masuk</a>
-      <a href="pages/register.php" class="btn btn-primary btn-sm">Daftar Gratis</a>
-    <?php endif; ?>
-  </div>
-</nav>
+<?php 
+$is_home = true;
+include __DIR__ . '/includes/navbar.php'; 
+?>
 
 <!-- HERO SECTION -->
 <section class="hero">
@@ -72,7 +44,7 @@ $featuredMaterials = $db->query("
     <div class="hero-content">
       <div class="hero-eyebrow">
         <i class="fas fa-star" style="font-size:0.7rem;"></i>
-        Platform TOEFL #1 Indonesia
+        Platform TOEFL #1 Indonesiaasdsdada
       </div>
       <h1 class="hero-title">
         Raih Skor TOEFL <span>Impianmu</span> Bersama Kami
@@ -405,71 +377,6 @@ $featuredMaterials = $db->query("
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">
-        <div class="brand-icon">T</div>
-        <div class="footer-brand-name">TOEFLMaster</div>
-      </div>
-      <p class="footer-desc">Platform belajar TOEFL terlengkap di Indonesia. Kuasai Listening, Structure, dan Reading dengan materi dan latihan soal berkualitas tinggi.</p>
-      <div style="display:flex;gap:10px;">
-        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.3)';this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#94A3B8';"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.3)';this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#94A3B8';"><i class="fab fa-instagram"></i></a>
-        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.3)';this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#94A3B8';"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-    <div>
-      <h5>Materi</h5>
-      <div class="footer-links">
-        <a href="pages/listening.php">Listening Comprehension</a>
-        <a href="pages/structure.php">Structure & Written Expression</a>
-        <a href="pages/reading.php">Reading Comprehension</a>
-        <a href="pages/materials.php">Semua Materi</a>
-      </div>
-    </div>
-    <div>
-      <h5>Latihan</h5>
-      <div class="footer-links">
-        <a href="pages/tests.php?type=mini">Mini Test</a>
-        <a href="pages/tests.php?type=full">Full Test (100 Soal)</a>
-        <a href="pages/tests.php">Semua Latihan</a>
-      </div>
-    </div>
-    <div>
-      <h5>Akun</h5>
-      <div class="footer-links">
-        <a href="pages/register.php">Daftar</a>
-        <a href="pages/login.php">Masuk</a>
-        <a href="pages/dashboard.php">Dashboard</a>
-        <a href="pages/about.php">Tentang Platform</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© <?= date('Y') ?> TOEFLMaster. Dibuat untuk keperluan akademis.</p>
-    <p style="color:#475569;">Designed with ❤️ for TOEFL Learners</p>
-  </div>
-</footer>
-
-<script>
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
-});
-
-// Fade in animation on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(el => {
-    if (el.isIntersecting) el.target.style.opacity = '1';
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in-up').forEach(el => {
-  el.style.opacity = '0';
-  observer.observe(el);
-});
-</script>
+<?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>

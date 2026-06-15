@@ -54,13 +54,7 @@ body { background:#F1F5F9; }
 </style>
 </head>
 <body>
-<nav class="navbar scrolled">
-  <a href="<?= SITE_URL ?>/index.php" class="navbar-brand"><div class="brand-icon">T</div>TOEFLMaster</a>
-  <div class="navbar-actions">
-    <a href="<?= SITE_URL ?>/pages/dashboard.php" class="btn btn-secondary btn-sm"><i class="fas fa-home"></i> Dashboard</a>
-    <a href="<?= SITE_URL ?>/pages/tests.php" class="btn btn-primary btn-sm">Ambil Test Lain</a>
-  </div>
-</nav>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <div style="padding-top:80px;">
 <!-- Hero Result Banner -->
@@ -248,5 +242,6 @@ function filterReview(filter) {
   });
 }
 </script>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

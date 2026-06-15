@@ -26,25 +26,7 @@ $totalCounts = $db->query("SELECT c.section, COUNT(m.id) as cnt FROM materials m
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<nav class="navbar scrolled">
-  <a href="<?= SITE_URL ?>/index.php" class="navbar-brand"><div class="brand-icon">T</div>TOEFLMaster</a>
-  <ul class="navbar-nav">
-    <li><a href="<?= SITE_URL ?>/index.php" class="nav-link">Beranda</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/listening.php" class="nav-link">Listening</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/structure.php" class="nav-link">Structure</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/reading.php" class="nav-link">Reading</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/tests.php" class="nav-link">Latihan Soal</a></li>
-  </ul>
-  <div class="navbar-actions">
-    <?php if(isUserLoggedIn()): ?>
-      <a href="<?= SITE_URL ?>/pages/dashboard.php" class="btn btn-secondary btn-sm">Dashboard</a>
-      <a href="<?= SITE_URL ?>/pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
-    <?php else: ?>
-      <a href="<?= SITE_URL ?>/pages/login.php" class="btn btn-secondary btn-sm">Masuk</a>
-      <a href="<?= SITE_URL ?>/pages/register.php" class="btn btn-primary btn-sm">Daftar</a>
-    <?php endif; ?>
-  </div>
-</nav>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <div style="padding-top:70px;">
   <!-- Page Header -->
@@ -167,5 +149,6 @@ $totalCounts = $db->query("SELECT c.section, COUNT(m.id) as cnt FROM materials m
 <footer style="background:#0F172A;padding:30px 5%;text-align:center;color:#64748B;font-size:0.85rem;">
   <p>© <?= date('Y') ?> TOEFLMaster · <a href="<?= SITE_URL ?>" style="color:#60A5FA;">Beranda</a> · <a href="<?= SITE_URL ?>/pages/tests.php" style="color:#60A5FA;">Latihan Soal</a></p>
 </footer>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
