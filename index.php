@@ -44,7 +44,7 @@ include __DIR__ . '/includes/navbar.php';
     <div class="hero-content">
       <div class="hero-eyebrow">
         <i class="fas fa-star" style="font-size:0.7rem;"></i>
-        Platform TOEFL #1 Indonesiaasdsdada
+        Platform TOEFL #1 Indonesia
       </div>
       <h1 class="hero-title">
         Raih Skor TOEFL <span>Impianmu</span> Bersama Kami

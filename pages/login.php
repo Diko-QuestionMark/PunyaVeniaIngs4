@@ -90,6 +90,6 @@ body{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);min-height:100vh
     <a href="<?= SITE_URL ?>" style="font-size:0.82rem;color:#94A3B8;">← Kembali ke Beranda</a>
   </div>
 </div>
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+
 </body>
 </html>
