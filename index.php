@@ -56,7 +56,6 @@ include __DIR__ . '/includes/navbar.php';
         <a href="pages/register.php" class="btn btn-primary btn-lg">
           <i class="fas fa-rocket"></i> Mulai Belajar Gratis
         </a>
-        </a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat-item">
@@ -80,51 +79,8 @@ include __DIR__ . '/includes/navbar.php';
 
     <!-- Hero Visual -->
     <div class="hero-visual">
-      <div class="score-card">
-        <div class="score-card-title">📊 TOEFL Score Summary</div>
-        <div class="score-display">
-          <div class="score-number">550</div>
-          <div>
-            <div class="score-max">/677</div>
-            <div style="color:#10B981;font-size:0.8rem;font-weight:600;margin-top:2px;">↑ +45 dari tes sebelumnya</div>
-          </div>
-        </div>
-        <div class="score-progress">
-          <div class="score-bar" style="width:81%;"></div>
-        </div>
-        <div class="section-scores">
-          <div class="section-score-item">
-            <span class="section-score-label">Listening</span>
-            <span class="section-score-val" style="color:#60A5FA;">195</span>
-          </div>
-          <div class="section-score-item">
-            <span class="section-score-label">Structure</span>
-            <span class="section-score-val" style="color:#A78BFA;">187</span>
-          </div>
-          <div class="section-score-item">
-            <span class="section-score-label">Reading</span>
-            <span class="section-score-val" style="color:#34D399;">168</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="feature-pills">
-        <div class="feature-pill">
-          <span class="pill-dot"></span>
-          12 Materi Lengkap
-        </div>
-        <div class="feature-pill">
-          <span class="pill-dot" style="background:#F59E0B;"></span>
-          Mini Test Interaktif
-        </div>
-        <div class="feature-pill">
-          <span class="pill-dot" style="background:#A78BFA;"></span>
-          Full Test 100 Soal
-        </div>
-        <div class="feature-pill">
-          <span class="pill-dot" style="background:#60A5FA;"></span>
-          Pembahasan Lengkap
-        </div>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <img src="<?= SITE_URL ?>/assets/mascot.png" alt="TOEFLMaster Mascot" style="max-width: 100%;">
       </div>
     </div>
   </div>
