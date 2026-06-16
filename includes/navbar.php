@@ -25,11 +25,8 @@ $is_home = isset($is_home) ? $is_home : false;
       </a>
       <a href="<?= SITE_URL ?>/pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
     <?php elseif (isUserLoggedIn()): ?>
-      <span style="font-size:0.85rem;color:#64748B;margin-right:10px;">
-        Halo, <strong><?= isset($_SESSION['username']) ? sanitize($_SESSION['username']) : 'User' ?></strong>!
-      </span>
       <a href="<?= SITE_URL ?>/pages/dashboard.php" class="btn btn-secondary btn-sm">
-        <i class="fas fa-user"></i> Dashboard
+        <i class="fas fa-user"></i> <?= isset($_SESSION['username']) ? sanitize($_SESSION['username']) : 'Dashboard' ?>
       </a>
       <a href="<?= SITE_URL ?>/pages/logout.php" class="btn btn-primary btn-sm">Keluar</a>
     <?php else: ?>
