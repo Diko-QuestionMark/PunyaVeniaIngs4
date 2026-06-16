@@ -56,8 +56,6 @@ include __DIR__ . '/includes/navbar.php';
         <a href="pages/register.php" class="btn btn-primary btn-lg">
           <i class="fas fa-rocket"></i> Mulai Belajar Gratis
         </a>
-        <a href="pages/tests.php" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15);">
-          <i class="fas fa-play"></i> Coba Full Test
         </a>
       </div>
       <div class="hero-stats">
