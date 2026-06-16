@@ -18,7 +18,7 @@ $readingCats   = array_filter($categories, fn($c) => $c['section'] === 'reading'
 $featuredMaterials = $db->query("
     SELECT m.*, c.name as cat_name, c.section 
     FROM materials m JOIN categories c ON m.category_id = c.id 
-    WHERE m.is_published=1 ORDER BY m.id DESC LIMIT 6
+    WHERE m.is_published=1 ORDER BY m.id DESC LIMIT 8
 ")->fetchAll();
 ?>
 <!DOCTYPE html>
