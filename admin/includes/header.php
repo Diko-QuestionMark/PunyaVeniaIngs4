@@ -14,7 +14,7 @@
 <!-- SIDEBAR -->
 <aside class="admin-sidebar" id="adminSidebar">
   <div class="admin-sidebar-logo">
-    <img src="<?= SITE_URL ?>/assets/icon.png" alt="Admin" class="admin-logo-icon" style="background:none; object-fit:contain; padding:2px;">
+    <div class="admin-logo-icon">T</div>
     <div>
       <div class="admin-logo-text">TOEFLMaster</div>
       <div class="admin-logo-sub">Admin Panel</div>

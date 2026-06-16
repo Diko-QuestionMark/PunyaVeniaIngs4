@@ -4,7 +4,7 @@ $is_home = isset($is_home) ? $is_home : false;
 ?>
 <nav class="navbar scrolled" id="navbar">
   <a href="<?= SITE_URL ?>/index.php" class="navbar-brand">
-    <img src="<?= SITE_URL ?>/assets/icon.png" alt="TOEFLMaster" class="brand-icon" style="background:none; object-fit:contain; padding:2px;">
+    <div class="brand-icon">T</div>
     TOEFLMaster
   </a>
 

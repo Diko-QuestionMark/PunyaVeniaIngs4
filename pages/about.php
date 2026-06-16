@@ -13,7 +13,7 @@
 <div style="padding-top:70px;">
   <!-- Hero -->
   <div style="background:linear-gradient(135deg,#0F172A,#1E293B);padding:80px 5%;text-align:center;">
-    <img src="<?= SITE_URL ?>/assets/icon.png" alt="TOEFLMaster" style="width:80px;height:80px;object-fit:contain;margin:0 auto 20px;display:block;">
+    <div style="width:80px;height:80px;background:linear-gradient(135deg,#2563EB,#7C3AED);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:900;color:white;margin:0 auto 20px;">T</div>
     <h1 style="color:white;font-size:2rem;margin-bottom:12px;">Tentang TOEFLMaster</h1>
     <p style="color:#94A3B8;max-width:580px;margin:0 auto;font-size:0.95rem;line-height:1.7;">
       Platform belajar TOEFL berbasis web yang dirancang untuk membantu mahasiswa mempersiapkan ujian TOEFL ITP secara mandiri, terstruktur, dan efektif.
