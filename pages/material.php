@@ -67,18 +67,6 @@ $secLabel = ['listening'=>'🎧 Listening','structure'=>'📝 Structure','readin
       <span style="color:#0F172A;"><?= sanitize($material['title']) ?></span>
     </div>
 
-    <!-- Material Header -->
-    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:32px;margin-bottom:24px;">
-      <div class="material-badge badge-<?= $material['section'] ?>" style="margin-bottom:16px;font-size:0.8rem;">
-        <?= ['listening'=>'🎧','structure'=>'📝','reading'=>'📖'][$material['section']] ?>
-        <?= sanitize($material['cat_name']) ?>
-      </div>
-      <h1 style="font-size:1.6rem;margin-bottom:10px;"><?= sanitize($material['title']) ?></h1>
-      <?php if($material['summary']): ?>
-      <p style="color:#64748B;font-size:0.95rem;line-height:1.7;"><?= sanitize($material['summary']) ?></p>
-      <?php endif; ?>
-    </div>
-
     <!-- Material Content -->
     <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
       <div class="content-body">
