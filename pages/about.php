@@ -112,10 +112,6 @@
     </div>
   </div>
 </div>
-
-<footer style="background:#0F172A;padding:30px 5%;text-align:center;color:#64748B;font-size:0.85rem;">
-  <p>© <?= date('Y') ?> TOEFLMaster · Proyek Tugas Pemrograman Web</p>
-</footer>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
