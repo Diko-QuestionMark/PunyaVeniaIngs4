@@ -101,10 +101,6 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
     <?php endif; ?>
   </div>
 </div>
-
-<footer style="background:#0F172A;padding:30px 5%;text-align:center;color:#64748B;font-size:0.85rem;">
-  <p>© <?= date('Y') ?> TOEFLMaster · <a href="<?= SITE_URL ?>" style="color:#60A5FA;">Beranda</a></p>
-</footer>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
