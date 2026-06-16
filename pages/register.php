@@ -59,7 +59,7 @@ body{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);min-height:100vh
 <body>
 <div class="auth-card">
   <div class="auth-logo">
-    <a href="<?= SITE_URL ?>"><div class="auth-logo-icon">T</div></a>
+    <a href="<?= SITE_URL ?>"><img src="<?= SITE_URL ?>/assets/icon.png" alt="TOEFLMaster" class="auth-logo-icon" style="background:none; object-fit:contain; padding:2px;"></a>
     <h2>Buat Akun Gratis</h2>
     <p>Mulai belajar TOEFL hari ini, tanpa biaya!</p>
   </div>

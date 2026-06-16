@@ -3,7 +3,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-brand">
-        <div class="brand-icon">T</div>
+        <img src="<?= SITE_URL ?>/assets/icon.png" alt="TOEFLMaster" class="brand-icon" style="background:none; object-fit:contain; padding:2px;">
         <div class="footer-brand-name">TOEFLMaster</div>
       </div>
       <p class="footer-desc">Platform belajar TOEFL terlengkap di Indonesia. Kuasai Listening, Structure, dan Reading dengan materi dan latihan soal berkualitas tinggi.</p>

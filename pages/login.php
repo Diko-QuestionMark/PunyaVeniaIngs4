@@ -57,7 +57,7 @@ body{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);min-height:100vh
 <body>
 <div class="auth-card">
   <div class="auth-logo">
-    <a href="<?= SITE_URL ?>"><div class="auth-logo-icon">T</div></a>
+    <a href="<?= SITE_URL ?>"><img src="<?= SITE_URL ?>/assets/icon.png" alt="TOEFLMaster" class="auth-logo-icon" style="background:none; object-fit:contain; padding:2px;"></a>
     <h2 style="font-size:1.25rem;color:#0F172A;">Selamat Datang Kembali!</h2>
     <p style="font-size:0.85rem;color:#94A3B8;margin-top:4px;">Masuk dan lanjutkan belajar TOEFL</p>
   </div>
