@@ -153,16 +153,6 @@ body { background: #F1F5F9; }
     </div>
   </div>
   <?php endforeach; ?>
-
-  <!-- Submit confirmation -->
-  <div style="background:white;border-radius:16px;border:1px solid #E2E8F0;padding:24px;text-align:center;" id="submitArea" style="display:none;">
-    <div style="font-size:2rem;margin-bottom:10px;">✅</div>
-    <h3 style="margin-bottom:8px;">Siap Submit?</h3>
-    <p style="color:#64748B;font-size:0.9rem;margin-bottom:20px;">Pastikan semua soal sudah dijawab sebelum submit.</p>
-    <button type="submit" class="btn btn-success btn-lg">
-      <i class="fas fa-paper-plane"></i> Submit Test & Lihat Hasil
-    </button>
-  </div>
 </div>
 </form>
 
