@@ -18,6 +18,8 @@ $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.
 
 <div style="padding-top:70px;">
 <div style="background:linear-gradient(135deg,#064E3B,#065F46,#047857);padding:70px 5% 60px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-40px;right:-40px;width:300px;height:300px;background:rgba(255,255,255,0.03);border-radius:50%;"></div>
+  <div style="position:absolute;bottom:-60px;left:10%;width:200px;height:200px;background:rgba(255,255,255,0.04);border-radius:50%;"></div>
   <div style="max-width:900px;margin:0 auto;position:relative;">
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:20px;">
       <div style="width:64px;height:64px;background:rgba(255,255,255,0.15);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📖</div>

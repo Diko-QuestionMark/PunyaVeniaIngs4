@@ -146,9 +146,6 @@ $totalCounts = $db->query("SELECT c.section, COUNT(m.id) as cnt FROM materials m
   </div>
 </div>
 
-<footer style="background:#0F172A;padding:30px 5%;text-align:center;color:#64748B;font-size:0.85rem;">
-  <p>© <?= date('Y') ?> TOEFLMaster · <a href="<?= SITE_URL ?>" style="color:#60A5FA;">Beranda</a> · <a href="<?= SITE_URL ?>/pages/tests.php" style="color:#60A5FA;">Latihan Soal</a></p>
-</footer>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

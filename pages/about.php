@@ -32,6 +32,17 @@
         Website ini menyediakan materi pembelajaran yang lengkap, latihan soal per materi, mini test, serta simulasi full test 100 soal yang mendekati kondisi ujian TOEFL sesungguhnya. Seluruh konten dikelola oleh admin melalui panel manajemen yang mudah digunakan.
       </p>
     </div>
+    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
+      <h2 style="font-size:1.2rem;margin-bottom:16px;">👥 Kelompok Kami</h2>
+      <ul style="list-style:none;padding-left:0;color:#475569;font-size:0.95rem;line-height:1.6;">
+        <li>1. Chelsea Germany</li>
+        <li>2. Yana</li>
+        <li>3. Rizky Kamelia</li>
+        <li>4. Sena</li>
+        <li>5. Venia</li>
+        <li>6. Fedriko</li>
+      </ul>
+    </div>
 
     <!-- Features Summary -->
     <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
