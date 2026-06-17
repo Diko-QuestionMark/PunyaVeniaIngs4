@@ -55,12 +55,17 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['submit_test'])) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body { background: #F1F5F9; }
-.quiz-wrapper { max-width: 860px; margin: 0 auto; padding: 30px 20px 80px; }
-.quiz-nav-dots { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 20px; background: white; border-radius: 12px; margin-bottom: 20px; border: 1px solid #E2E8F0; }
+.quiz-wrapper { max-width: 1100px; margin: 0 auto; padding: 30px 20px 80px; display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: start; }
+.quiz-nav-dots { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 16px 20px; background: white; border-radius: 12px; border: 1px solid #E2E8F0; position: sticky; top: 90px; max-height: calc(100vh - 120px); overflow-y: auto; justify-items: center; }
 .q-dot { width: 32px; height: 32px; border-radius: 8px; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: all 0.2s; color: #64748B; background: white; }
 .q-dot.answered { background: #DBEAFE; border-color: #2563EB; color: #1D4ED8; }
 .q-dot.current  { background: #2563EB; border-color: #2563EB; color: white; }
 .passage-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; max-height: 220px; overflow-y: auto; font-size: 0.9rem; line-height: 1.8; color: #334155; }
+/* Resposive grid for mobile */
+@media (max-width: 768px) {
+  .quiz-wrapper { grid-template-columns: 1fr; }
+  .quiz-nav-dots { position: static; max-height: 200px; }
+}
 </style>
 </head>
 <body>
@@ -99,6 +104,7 @@ body { background: #F1F5F9; }
   </div>
 
   <!-- Questions -->
+  <div class="quiz-questions-container">
   <?php foreach($questions as $i=>$q): ?>
   <div class="question-card" id="qcard-<?= $i ?>" style="<?= $i>0?'display:none;':'' ?>margin-bottom:20px;">
 
@@ -153,6 +159,7 @@ body { background: #F1F5F9; }
     </div>
   </div>
   <?php endforeach; ?>
+  </div>
 </div>
 </form>
 
