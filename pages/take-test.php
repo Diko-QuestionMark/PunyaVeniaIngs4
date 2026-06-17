@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['submit_test'])) {
 <style>
 body { background: #F1F5F9; }
 .quiz-wrapper { max-width: 1100px; margin: 0 auto; padding: 30px 20px 80px; display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: start; }
-.quiz-nav-dots { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 16px 20px; background: white; border-radius: 12px; border: 1px solid #E2E8F0; position: sticky; top: 90px; max-height: calc(100vh - 120px); overflow-y: auto; justify-items: center; }
+.quiz-nav-dots { display: grid; grid-template-columns: repeat(auto-fit, minmax(32px, 1fr)); gap: 6px; padding: 16px 20px; background: white; border-radius: 12px; border: 1px solid #E2E8F0; position: sticky; top: 90px; max-height: calc(100vh - 120px); overflow-y: auto; justify-items: center; }
 .q-dot { width: 32px; height: 32px; border-radius: 8px; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: all 0.2s; color: #64748B; background: white; }
 .q-dot.answered { background: #DBEAFE; border-color: #2563EB; color: #1D4ED8; }
 .q-dot.current  { background: #2563EB; border-color: #2563EB; color: white; }
