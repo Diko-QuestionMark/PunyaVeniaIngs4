@@ -12,7 +12,7 @@ $is_home = isset($is_home) ? $is_home : false;
     <?php $current_page = basename($_SERVER['PHP_SELF']); ?>
     <li><a href="<?= SITE_URL ?>/index.php" class="nav-link <?= $is_home ? 'active' : '' ?>">Beranda</a></li>
     <li><a href="<?= SITE_URL ?>/pages/listening.php" class="nav-link <?= $current_page === 'listening.php' ? 'active' : '' ?>">Listening</a></li>
-    <li><a href="<?= SITE_URL ?>/pages/structure.php" class="nav-link <?= $current_page === 'structure.php' ? 'active' : '' ?>">Structure</a></li>
+    <li><a href="<?= SITE_URL ?>/pages/structure.php" class="nav-link <?= $current_page === 'structure.php' ? 'active' : '' ?>">Structure & Written Expression</a></li>
     <li><a href="<?= SITE_URL ?>/pages/reading.php" class="nav-link <?= $current_page === 'reading.php' ? 'active' : '' ?>">Reading</a></li>
     <li><a href="<?= SITE_URL ?>/pages/tests.php" class="nav-link <?= $current_page === 'tests.php' ? 'active' : '' ?>">Latihan Soal</a></li>
     <li><a href="<?= SITE_URL ?>/pages/about.php" class="nav-link <?= $current_page === 'about.php' ? 'active' : '' ?>">Tentang</a></li>
