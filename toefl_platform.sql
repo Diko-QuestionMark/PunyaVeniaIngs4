@@ -177,7 +177,6 @@ CREATE TABLE `questions` (
   `category_id` int(11) DEFAULT NULL,
   `material_id` int(11) DEFAULT NULL,
   `question_text` text NOT NULL,
-  `audio_file` varchar(255) DEFAULT NULL,
   `passage_text` longtext DEFAULT NULL,
   `option_a` text NOT NULL,
   `option_b` text NOT NULL,
@@ -190,18 +189,29 @@ CREATE TABLE `questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `question_audios`
+--
+
+CREATE TABLE `question_audios` (
+  `id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `audio_file` varchar(255) NOT NULL,
+  `sort_order` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `section`, `category_id`, `material_id`, `question_text`, `audio_file`, `passage_text`, `option_a`, `option_b`, `option_c`, `option_d`, `correct_answer`, `explanation`, `difficulty`, `created_at`) VALUES
-(1, 'listening', 1, NULL, 'Man: \"I can\'t believe how long the line is at the bookstore.\" Woman: \"I know. Maybe we should come back later.\" What does the woman suggest?', NULL, NULL, 'They should buy books online.', 'They should wait in line.', 'They should return at another time.', 'They should go to a different store.', 'C', 'The woman says \"Maybe we should come back later,\" which means she suggests returning at another time.', 'easy', '2026-06-13 12:19:28'),
-(2, 'listening', 1, NULL, 'Woman: \"Did you finish the assignment for Professor Johnson?\" Man: \"Are you kidding? I haven\'t even started.\" What can be inferred about the man?', NULL, NULL, 'He completed the assignment early.', 'He needs more time to finish.', 'He does not have an assignment.', 'He already submitted the assignment.', 'B', 'The expression \"I haven\'t even started\" implies he needs much more time to complete the assignment.', 'medium', '2026-06-13 12:19:28'),
-(3, 'structure', 5, NULL, '_______ the President signed the bill into law, it immediately went into effect.', NULL, NULL, 'When', 'Although', 'Despite', 'However', 'A', '\"When\" introduces a time clause showing that the bill went into effect at the moment the President signed it.', 'easy', '2026-06-13 12:19:28'),
-(4, 'structure', 5, NULL, 'The committee members, _______ had been working for months, finally reached a decision.', NULL, NULL, 'who', 'which', 'what', 'that', 'A', 'Use \"who\" for people. \"Committee members\" refers to people, so \"who\" is the correct relative pronoun.', 'easy', '2026-06-13 12:19:28'),
-(5, 'structure', 6, NULL, 'Identify the error: \"Neither the manager nor the employees was present at the meeting.\"', NULL, NULL, 'Neither', 'nor', 'was', 'at the meeting', 'C', 'With \"neither...nor\", the verb agrees with the subject closest to it. \"Employees\" is plural, so it should be \"were\" not \"was\".', 'medium', '2026-06-13 12:19:28'),
-(6, 'reading', 9, NULL, 'Read the passage: \"The Amazon rainforest, often called the lungs of the Earth, produces approximately 20% of the world\'s oxygen. Despite its importance, deforestation continues at an alarming rate, destroying millions of hectares annually.\" What is the main idea of this passage?', NULL, NULL, 'The Amazon produces 20% of the world\'s oxygen.', 'Deforestation is destroying the Amazon at an alarming rate.', 'The Amazon is vital but threatened by deforestation.', 'The Earth has many important rainforests.', 'C', 'The passage presents both the importance of the Amazon (oxygen production) and the threat it faces (deforestation), making option C the best summary of the main idea.', 'medium', '2026-06-13 12:19:28'),
-(7, 'reading', 10, NULL, 'The word \"alarming\" in the passage most nearly means:', NULL, NULL, 'surprising', 'disturbing', 'exciting', 'ordinary', 'B', '\"Alarming\" means causing worry or concern. In context, the rate of deforestation is described as disturbing/worrying.', 'easy', '2026-06-13 12:19:28'),
-(8, 'reading', 11, NULL, 'Based on the passage about the Amazon, what can be inferred?', NULL, NULL, 'The Amazon will recover quickly from deforestation.', 'Governments are doing nothing to stop deforestation.', 'The loss of the Amazon could affect global oxygen levels.', 'The Amazon is located in Africa.', 'C', 'If the Amazon produces 20% of the world\'s oxygen and is being destroyed, it can be inferred that its loss would impact global oxygen levels.', 'medium', '2026-06-13 12:19:28');
+INSERT INTO `questions` (`id`, `section`, `category_id`, `material_id`, `question_text`, `passage_text`, `option_a`, `option_b`, `option_c`, `option_d`, `correct_answer`, `explanation`, `difficulty`, `created_at`) VALUES
+(1, 'listening', 1, NULL, 'Man: \"I can\'t believe how long the line is at the bookstore.\" Woman: \"I know. Maybe we should come back later.\" What does the woman suggest?', NULL, 'They should buy books online.', 'They should wait in line.', 'They should return at another time.', 'They should go to a different store.', 'C', 'The woman says \"Maybe we should come back later,\" which means she suggests returning at another time.', 'easy', '2026-06-13 12:19:28'),
+(2, 'listening', 1, NULL, 'Woman: \"Did you finish the assignment for Professor Johnson?\" Man: \"Are you kidding? I haven\'t even started.\" What can be inferred about the man?', NULL, 'He completed the assignment early.', 'He needs more time to finish.', 'He does not have an assignment.', 'He already submitted the assignment.', 'B', 'The expression \"I haven\'t even started\" implies he needs much more time to complete the assignment.', 'medium', '2026-06-13 12:19:28'),
+(3, 'structure', 5, NULL, '_______ the President signed the bill into law, it immediately went into effect.', NULL, 'When', 'Although', 'Despite', 'However', 'A', '\"When\" introduces a time clause showing that the bill went into effect at the moment the President signed it.', 'easy', '2026-06-13 12:19:28'),
+(4, 'structure', 5, NULL, 'The committee members, _______ had been working for months, finally reached a decision.', NULL, 'who', 'which', 'what', 'that', 'A', 'Use \"who\" for people. \"Committee members\" refers to people, so \"who\" is the correct relative pronoun.', 'easy', '2026-06-13 12:19:28'),
+(5, 'structure', 6, NULL, 'Identify the error: \"Neither the manager nor the employees was present at the meeting.\"', NULL, 'Neither', 'nor', 'was', 'at the meeting', 'C', 'With \"neither...nor\", the verb agrees with the subject closest to it. \"Employees\" is plural, so it should be \"were\" not \"was\".', 'medium', '2026-06-13 12:19:28'),
+(6, 'reading', 9, NULL, 'Read the passage: \"The Amazon rainforest, often called the lungs of the Earth, produces approximately 20% of the world\'s oxygen. Despite its importance, deforestation continues at an alarming rate, destroying millions of hectares annually.\" What is the main idea of this passage?', NULL, 'The Amazon produces 20% of the world\'s oxygen.', 'Deforestation is destroying the Amazon at an alarming rate.', 'The Amazon is vital but threatened by deforestation.', 'The Earth has many important rainforests.', 'C', 'The passage presents both the importance of the Amazon (oxygen production) and the threat it faces (deforestation), making option C the best summary of the main idea.', 'medium', '2026-06-13 12:19:28'),
+(7, 'reading', 10, NULL, 'The word \"alarming\" in the passage most nearly means:', NULL, 'surprising', 'disturbing', 'exciting', 'ordinary', 'B', '\"Alarming\" means causing worry or concern. In context, the rate of deforestation is described as disturbing/worrying.', 'easy', '2026-06-13 12:19:28'),
+(8, 'reading', 11, NULL, 'Based on the passage about the Amazon, what can be inferred?', NULL, 'The Amazon will recover quickly from deforestation.', 'Governments are doing nothing to stop deforestation.', 'The loss of the Amazon could affect global oxygen levels.', 'The Amazon is located in Africa.', 'C', 'If the Amazon produces 20% of the world\'s oxygen and is being destroyed, it can be inferred that its loss would impact global oxygen levels.', 'medium', '2026-06-13 12:19:28');
 
 -- --------------------------------------------------------
 
@@ -435,6 +445,13 @@ ALTER TABLE `questions`
   ADD KEY `material_id` (`material_id`);
 
 --
+-- Indexes for table `question_audios`
+--
+ALTER TABLE `question_audios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_id` (`question_id`);
+
+--
 -- Indexes for table `tests`
 --
 ALTER TABLE `tests`
@@ -521,6 +538,12 @@ ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `question_audios`
+--
+ALTER TABLE `question_audios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
@@ -585,6 +608,12 @@ ALTER TABLE `practice_sets`
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`material_id`) REFERENCES `materials` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `question_audios`
+--
+ALTER TABLE `question_audios`
+  ADD CONSTRAINT `question_audios_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `test_questions`

@@ -28,31 +28,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $explanation    = trim($_POST['explanation'] ?? '') ?: null;
     $difficulty     = $_POST['difficulty'] ?? 'medium';
 
-    $audio_file = null;
     if ($id) {
-        $stmtAudio = $db->prepare("SELECT audio_file FROM questions WHERE id=?");
-        $stmtAudio->execute([$id]);
-        $existing = $stmtAudio->fetch();
-        $audio_file = $existing['audio_file'] ?? null;
-    }
+        $db->prepare("UPDATE questions SET section=?,category_id=?,material_id=?,question_text=?,passage_text=?,option_a=?,option_b=?,option_c=?,option_d=?,correct_answer=?,explanation=?,difficulty=? WHERE id=?")
+           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty,$id]);
+        
+        // Handle deletion of audio files
+        if (isset($_POST['delete_audios']) && is_array($_POST['delete_audios'])) {
+            foreach ($_POST['delete_audios'] as $audioId) {
+                $audioId = (int)$audioId;
+                $stmtFile = $db->prepare("SELECT audio_file FROM question_audios WHERE id=?");
+                $stmtFile->execute([$audioId]);
+                $fileName = $stmtFile->fetchColumn();
+                if ($fileName && file_exists(UPLOAD_PATH . $fileName)) {
+                    @unlink(UPLOAD_PATH . $fileName);
+                }
+                $db->prepare("DELETE FROM question_audios WHERE id=?")->execute([$audioId]);
+            }
+        }
 
-    if (isset($_FILES['audio_file']) && $_FILES['audio_file']['error'] === UPLOAD_ERR_OK) {
-        $ext = pathinfo($_FILES['audio_file']['name'], PATHINFO_EXTENSION);
-        $newname = 'audio_' . time() . '_' . rand(1000,9999) . '.' . $ext;
-        if (!is_dir(UPLOAD_PATH . 'audio')) mkdir(UPLOAD_PATH . 'audio', 0777, true);
-        move_uploaded_file($_FILES['audio_file']['tmp_name'], UPLOAD_PATH . 'audio/' . $newname);
-        $audio_file = 'audio/' . $newname;
-    }
+        // Handle updating sort order of existing files
+        if (isset($_POST['existing_sort']) && is_array($_POST['existing_sort'])) {
+            foreach ($_POST['existing_sort'] as $audioId => $sortVal) {
+                $db->prepare("UPDATE question_audios SET sort_order=? WHERE id=?")
+                   ->execute([(int)$sortVal, (int)$audioId]);
+            }
+        }
 
-    if ($id) {
-        $db->prepare("UPDATE questions SET section=?,category_id=?,material_id=?,question_text=?,passage_text=?,option_a=?,option_b=?,option_c=?,option_d=?,correct_answer=?,explanation=?,difficulty=?,audio_file=? WHERE id=?")
-           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty,$audio_file,$id]);
         flashMessage('success','Soal berhasil diperbarui.');
     } else {
-        $db->prepare("INSERT INTO questions (section,category_id,material_id,question_text,passage_text,option_a,option_b,option_c,option_d,correct_answer,explanation,difficulty,audio_file) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)")
-           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty,$audio_file]);
+        $db->prepare("INSERT INTO questions (section,category_id,material_id,question_text,passage_text,option_a,option_b,option_c,option_d,correct_answer,explanation,difficulty) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")
+           ->execute([$section,$category_id,$material_id,$question_text,$passage_text,$option_a,$option_b,$option_c,$option_d,$correct_answer,$explanation,$difficulty]);
+        $id = $db->lastInsertId();
         flashMessage('success','Soal berhasil ditambahkan ke bank soal.');
     }
+
+    // Handle uploading new audio files
+    if (isset($_FILES['audio_files']) && is_array($_FILES['audio_files']['name'])) {
+        $uploadedCount = count($_FILES['audio_files']['name']);
+        for ($i = 0; $i < $uploadedCount; $i++) {
+            if ($_FILES['audio_files']['error'][$i] === UPLOAD_ERR_OK) {
+                $ext = pathinfo($_FILES['audio_files']['name'][$i], PATHINFO_EXTENSION);
+                $newname = 'audio_' . time() . '_' . rand(1000,9999) . '_' . $i . '.' . $ext;
+                if (!is_dir(UPLOAD_PATH . 'audio')) {
+                    mkdir(UPLOAD_PATH . 'audio', 0777, true);
+                }
+                if (move_uploaded_file($_FILES['audio_files']['tmp_name'][$i], UPLOAD_PATH . 'audio/' . $newname)) {
+                    $audioPath = 'audio/' . $newname;
+                    $maxSort = $db->prepare("SELECT MAX(sort_order) FROM question_audios WHERE question_id=?");
+                    $maxSort->execute([$id]);
+                    $sortOrder = (int)$maxSort->fetchColumn() + 1;
+                    $db->prepare("INSERT INTO question_audios (question_id, audio_file, sort_order) VALUES (?, ?, ?)")
+                       ->execute([$id, $audioPath, $sortOrder]);
+                }
+            }
+        }
+    }
+
     redirect(SITE_URL.'/admin/pages/questions.php');
 }
 
@@ -62,11 +93,15 @@ $materials  = $db->query("SELECT id,title,category_id FROM materials WHERE is_pu
 if ($action === 'add') {
     $q = ['id'=>0,'section'=>'structure','category_id'=>null,'material_id'=>null,'question_text'=>'','passage_text'=>'','option_a'=>'','option_b'=>'','option_c'=>'','option_d'=>'','correct_answer'=>'A','explanation'=>'','difficulty'=>'medium'];
     $pageTitle = 'Tambah Soal Baru';
+    $audios = [];
 } elseif ($action === 'edit' && $id) {
     $stmt = $db->prepare("SELECT * FROM questions WHERE id=?"); $stmt->execute([$id]);
     $q = $stmt->fetch();
     if (!$q) { flashMessage('danger','Soal tidak ditemukan.'); redirect(SITE_URL.'/admin/pages/questions.php'); }
     $pageTitle = 'Edit Soal';
+    $stmtAudios = $db->prepare("SELECT * FROM question_audios WHERE question_id=? ORDER BY sort_order ASC");
+    $stmtAudios->execute([$id]);
+    $audios = $stmtAudios->fetchAll();
 } else {
     $pageTitle = 'Bank Soal';
     $section = $_GET['section'] ?? '';
@@ -174,14 +209,34 @@ include '../includes/header.php';
           <textarea name="question_text" class="form-control" rows="4" placeholder="Tulis pertanyaan dengan jelas dan lengkap..." required><?= sanitize($q['question_text']) ?></textarea>
         </div>
 
-        <div class="form-group" id="audioUploadGroup" style="<?= $q['section'] !== 'listening' && empty($q['audio_file']) ? 'display:none;' : '' ?>">
-          <label class="form-label">File Audio (Untuk soal Listening)</label>
-          <?php if(!empty($q['audio_file'])): ?>
-            <div style="margin-bottom:8px;">
-              <audio controls style="height:36px;width:100%;max-width:300px;"><source src="<?= UPLOAD_URL . $q['audio_file'] ?>"></audio>
+        <div class="form-group" id="audioUploadGroup" style="<?= $q['section'] !== 'listening' && empty($audios) ? 'display:none;' : '' ?>">
+          <label class="form-label" style="font-weight: 600;">File Audio (Untuk soal Listening)</label>
+          
+          <?php if(!empty($audios)): ?>
+            <div style="margin-bottom:16px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:12px;">
+              <label class="form-label" style="font-size:0.8rem;color:#64748B;margin-bottom:8px;">Audio Terunggah:</label>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <?php foreach($audios as $audio): ?>
+                  <div style="display:flex; align-items:center; gap:12px; background:white; padding:8px; border:1px solid #E2E8F0; border-radius:6px;">
+                    <div style="font-size:0.75rem; color:#64748B; min-width:85px; display:flex; align-items:center; gap:4px;">
+                      Urutan: <input type="number" name="existing_sort[<?= $audio['id'] ?>]" value="<?= $audio['sort_order'] ?>" style="width:45px; padding:2px 4px; border:1px solid #CBD5E1; border-radius:4px; font-size:0.75rem; text-align:center;">
+                    </div>
+                    <div style="flex:1;">
+                      <audio controls style="height:28px; width:100%;"><source src="<?= UPLOAD_URL . $audio['audio_file'] ?>"></audio>
+                    </div>
+                    <div>
+                      <label style="font-size:0.75rem; color:#EF4444; cursor:pointer; display:flex; align-items:center; gap:4px; margin:0;">
+                        <input type="checkbox" name="delete_audios[]" value="<?= $audio['id'] ?>"> Hapus
+                      </label>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+              </div>
             </div>
           <?php endif; ?>
-          <input type="file" name="audio_file" class="form-control" accept="audio/*">
+          
+          <label class="form-label" style="font-size:0.8rem;color:#64748B;">Upload Audio Baru (Bisa pilih banyak):</label>
+          <input type="file" name="audio_files[]" class="form-control" accept="audio/*" multiple>
         </div>
 
         <label class="form-label" style="margin-bottom:12px;">Pilihan Jawaban <span style="color:#EF4444;">*</span></label>
@@ -273,7 +328,7 @@ document.getElementById('sectionSel')?.addEventListener('change', function(e) {
     audioGroup.style.display = 'block';
   } else {
     // Only hide if there's no existing audio file, otherwise they might get confused why it disappeared
-    <?php if(empty($q['audio_file'])): ?>
+    <?php if(empty($audios)): ?>
     audioGroup.style.display = 'none';
     <?php endif; ?>
   }
