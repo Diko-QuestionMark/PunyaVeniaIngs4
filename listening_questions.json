@@ -1,0 +1,522 @@
+[
+    {
+        "question_text": "Man: 'I need to drop off this package at the post office before it closes.' Woman: 'You'd better hurry, it's almost five o'clock.' Narrator: What does the woman mean? (Q1)",
+        "option_a": "The post office is already closed.",
+        "option_b": "The man has plenty of time.",
+        "option_c": "The man should go to the post office quickly.",
+        "option_d": "She will take the package for him.",
+        "correct_answer": "C",
+        "explanation": "The woman implies the man needs to hurry because it closes at 5.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I wouldn't miss it for the world.' Woman: 'Are you going to the seminar on marketing strategies tomorrow?' Narrator: What does the man mean? (Q2)",
+        "option_a": "He has no interest in marketing.",
+        "option_b": "He will definitely attend the seminar.",
+        "option_c": "He is going on a trip around the world.",
+        "option_d": "He missed the seminar yesterday.",
+        "correct_answer": "B",
+        "explanation": "'I wouldn't miss it for the world' is an idiom meaning he will absolutely go.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Did you see my blue folder? I left it right here on the desk.' Woman: 'I saw Sarah taking some files to the conference room. Maybe yours was in the stack.' Narrator: What does the woman imply? (Q3)",
+        "option_a": "Sarah might have taken the folder by mistake.",
+        "option_b": "The blue folder is in the trash.",
+        "option_c": "She took the folder to the conference room.",
+        "option_d": "Sarah has a blue folder just like his.",
+        "correct_answer": "A",
+        "explanation": "The woman suggests that Sarah might have accidentally picked it up with other files.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Yes, but it seems to jam more often.' Woman: 'The new printer in the office is so much faster than the old one.' Narrator: What is the man's opinion of the new printer? (Q4)",
+        "option_a": "It is completely useless.",
+        "option_b": "It is fast and flawless.",
+        "option_c": "It has both positive and negative aspects.",
+        "option_d": "It is worse than the old one in every way.",
+        "correct_answer": "C",
+        "explanation": "He acknowledges it's faster but points out a negative (it jams often).",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I thought the deadline for the report was Friday.' Woman: 'It was, but the manager moved it up to Wednesday.' Narrator: What does the woman say about the deadline? (Q5)",
+        "option_a": "It has been delayed.",
+        "option_b": "It has been brought forward.",
+        "option_c": "It remains unchanged.",
+        "option_d": "It is no longer required.",
+        "correct_answer": "B",
+        "explanation": "To 'move up' a deadline means to bring it forward to an earlier date.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I need to drop off this package at the post office before it closes.' Woman: 'You'd better hurry, it's almost five o'clock.' Narrator: What does the woman mean? (Q6)",
+        "option_a": "The post office is already closed.",
+        "option_b": "The man has plenty of time.",
+        "option_c": "The man should go to the post office quickly.",
+        "option_d": "She will take the package for him.",
+        "correct_answer": "C",
+        "explanation": "The woman implies the man needs to hurry because it closes at 5.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I wouldn't miss it for the world.' Woman: 'Are you going to the seminar on marketing strategies tomorrow?' Narrator: What does the man mean? (Q7)",
+        "option_a": "He has no interest in marketing.",
+        "option_b": "He will definitely attend the seminar.",
+        "option_c": "He is going on a trip around the world.",
+        "option_d": "He missed the seminar yesterday.",
+        "correct_answer": "B",
+        "explanation": "'I wouldn't miss it for the world' is an idiom meaning he will absolutely go.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Did you see my blue folder? I left it right here on the desk.' Woman: 'I saw Sarah taking some files to the conference room. Maybe yours was in the stack.' Narrator: What does the woman imply? (Q8)",
+        "option_a": "Sarah might have taken the folder by mistake.",
+        "option_b": "The blue folder is in the trash.",
+        "option_c": "She took the folder to the conference room.",
+        "option_d": "Sarah has a blue folder just like his.",
+        "correct_answer": "A",
+        "explanation": "The woman suggests that Sarah might have accidentally picked it up with other files.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Yes, but it seems to jam more often.' Woman: 'The new printer in the office is so much faster than the old one.' Narrator: What is the man's opinion of the new printer? (Q9)",
+        "option_a": "It is completely useless.",
+        "option_b": "It is fast and flawless.",
+        "option_c": "It has both positive and negative aspects.",
+        "option_d": "It is worse than the old one in every way.",
+        "correct_answer": "C",
+        "explanation": "He acknowledges it's faster but points out a negative (it jams often).",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I thought the deadline for the report was Friday.' Woman: 'It was, but the manager moved it up to Wednesday.' Narrator: What does the woman say about the deadline? (Q10)",
+        "option_a": "It has been delayed.",
+        "option_b": "It has been brought forward.",
+        "option_c": "It remains unchanged.",
+        "option_d": "It is no longer required.",
+        "correct_answer": "B",
+        "explanation": "To 'move up' a deadline means to bring it forward to an earlier date.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I need to drop off this package at the post office before it closes.' Woman: 'You'd better hurry, it's almost five o'clock.' Narrator: What does the woman mean? (Q11)",
+        "option_a": "The post office is already closed.",
+        "option_b": "The man has plenty of time.",
+        "option_c": "The man should go to the post office quickly.",
+        "option_d": "She will take the package for him.",
+        "correct_answer": "C",
+        "explanation": "The woman implies the man needs to hurry because it closes at 5.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I wouldn't miss it for the world.' Woman: 'Are you going to the seminar on marketing strategies tomorrow?' Narrator: What does the man mean? (Q12)",
+        "option_a": "He has no interest in marketing.",
+        "option_b": "He will definitely attend the seminar.",
+        "option_c": "He is going on a trip around the world.",
+        "option_d": "He missed the seminar yesterday.",
+        "correct_answer": "B",
+        "explanation": "'I wouldn't miss it for the world' is an idiom meaning he will absolutely go.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Did you see my blue folder? I left it right here on the desk.' Woman: 'I saw Sarah taking some files to the conference room. Maybe yours was in the stack.' Narrator: What does the woman imply? (Q13)",
+        "option_a": "Sarah might have taken the folder by mistake.",
+        "option_b": "The blue folder is in the trash.",
+        "option_c": "She took the folder to the conference room.",
+        "option_d": "Sarah has a blue folder just like his.",
+        "correct_answer": "A",
+        "explanation": "The woman suggests that Sarah might have accidentally picked it up with other files.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Yes, but it seems to jam more often.' Woman: 'The new printer in the office is so much faster than the old one.' Narrator: What is the man's opinion of the new printer? (Q14)",
+        "option_a": "It is completely useless.",
+        "option_b": "It is fast and flawless.",
+        "option_c": "It has both positive and negative aspects.",
+        "option_d": "It is worse than the old one in every way.",
+        "correct_answer": "C",
+        "explanation": "He acknowledges it's faster but points out a negative (it jams often).",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I thought the deadline for the report was Friday.' Woman: 'It was, but the manager moved it up to Wednesday.' Narrator: What does the woman say about the deadline? (Q15)",
+        "option_a": "It has been delayed.",
+        "option_b": "It has been brought forward.",
+        "option_c": "It remains unchanged.",
+        "option_d": "It is no longer required.",
+        "correct_answer": "B",
+        "explanation": "To 'move up' a deadline means to bring it forward to an earlier date.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I need to drop off this package at the post office before it closes.' Woman: 'You'd better hurry, it's almost five o'clock.' Narrator: What does the woman mean? (Q16)",
+        "option_a": "The post office is already closed.",
+        "option_b": "The man has plenty of time.",
+        "option_c": "The man should go to the post office quickly.",
+        "option_d": "She will take the package for him.",
+        "correct_answer": "C",
+        "explanation": "The woman implies the man needs to hurry because it closes at 5.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I wouldn't miss it for the world.' Woman: 'Are you going to the seminar on marketing strategies tomorrow?' Narrator: What does the man mean? (Q17)",
+        "option_a": "He has no interest in marketing.",
+        "option_b": "He will definitely attend the seminar.",
+        "option_c": "He is going on a trip around the world.",
+        "option_d": "He missed the seminar yesterday.",
+        "correct_answer": "B",
+        "explanation": "'I wouldn't miss it for the world' is an idiom meaning he will absolutely go.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Did you see my blue folder? I left it right here on the desk.' Woman: 'I saw Sarah taking some files to the conference room. Maybe yours was in the stack.' Narrator: What does the woman imply? (Q18)",
+        "option_a": "Sarah might have taken the folder by mistake.",
+        "option_b": "The blue folder is in the trash.",
+        "option_c": "She took the folder to the conference room.",
+        "option_d": "Sarah has a blue folder just like his.",
+        "correct_answer": "A",
+        "explanation": "The woman suggests that Sarah might have accidentally picked it up with other files.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Yes, but it seems to jam more often.' Woman: 'The new printer in the office is so much faster than the old one.' Narrator: What is the man's opinion of the new printer? (Q19)",
+        "option_a": "It is completely useless.",
+        "option_b": "It is fast and flawless.",
+        "option_c": "It has both positive and negative aspects.",
+        "option_d": "It is worse than the old one in every way.",
+        "correct_answer": "C",
+        "explanation": "He acknowledges it's faster but points out a negative (it jams often).",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I thought the deadline for the report was Friday.' Woman: 'It was, but the manager moved it up to Wednesday.' Narrator: What does the woman say about the deadline? (Q20)",
+        "option_a": "It has been delayed.",
+        "option_b": "It has been brought forward.",
+        "option_c": "It remains unchanged.",
+        "option_d": "It is no longer required.",
+        "correct_answer": "B",
+        "explanation": "To 'move up' a deadline means to bring it forward to an earlier date.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I need to drop off this package at the post office before it closes.' Woman: 'You'd better hurry, it's almost five o'clock.' Narrator: What does the woman mean? (Q21)",
+        "option_a": "The post office is already closed.",
+        "option_b": "The man has plenty of time.",
+        "option_c": "The man should go to the post office quickly.",
+        "option_d": "She will take the package for him.",
+        "correct_answer": "C",
+        "explanation": "The woman implies the man needs to hurry because it closes at 5.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I wouldn't miss it for the world.' Woman: 'Are you going to the seminar on marketing strategies tomorrow?' Narrator: What does the man mean? (Q22)",
+        "option_a": "He has no interest in marketing.",
+        "option_b": "He will definitely attend the seminar.",
+        "option_c": "He is going on a trip around the world.",
+        "option_d": "He missed the seminar yesterday.",
+        "correct_answer": "B",
+        "explanation": "'I wouldn't miss it for the world' is an idiom meaning he will absolutely go.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Did you see my blue folder? I left it right here on the desk.' Woman: 'I saw Sarah taking some files to the conference room. Maybe yours was in the stack.' Narrator: What does the woman imply? (Q23)",
+        "option_a": "Sarah might have taken the folder by mistake.",
+        "option_b": "The blue folder is in the trash.",
+        "option_c": "She took the folder to the conference room.",
+        "option_d": "Sarah has a blue folder just like his.",
+        "correct_answer": "A",
+        "explanation": "The woman suggests that Sarah might have accidentally picked it up with other files.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Yes, but it seems to jam more often.' Woman: 'The new printer in the office is so much faster than the old one.' Narrator: What is the man's opinion of the new printer? (Q24)",
+        "option_a": "It is completely useless.",
+        "option_b": "It is fast and flawless.",
+        "option_c": "It has both positive and negative aspects.",
+        "option_d": "It is worse than the old one in every way.",
+        "correct_answer": "C",
+        "explanation": "He acknowledges it's faster but points out a negative (it jams often).",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I thought the deadline for the report was Friday.' Woman: 'It was, but the manager moved it up to Wednesday.' Narrator: What does the woman say about the deadline? (Q25)",
+        "option_a": "It has been delayed.",
+        "option_b": "It has been brought forward.",
+        "option_c": "It remains unchanged.",
+        "option_d": "It is no longer required.",
+        "correct_answer": "B",
+        "explanation": "To 'move up' a deadline means to bring it forward to an earlier date.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I need to drop off this package at the post office before it closes.' Woman: 'You'd better hurry, it's almost five o'clock.' Narrator: What does the woman mean? (Q26)",
+        "option_a": "The post office is already closed.",
+        "option_b": "The man has plenty of time.",
+        "option_c": "The man should go to the post office quickly.",
+        "option_d": "She will take the package for him.",
+        "correct_answer": "C",
+        "explanation": "The woman implies the man needs to hurry because it closes at 5.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I wouldn't miss it for the world.' Woman: 'Are you going to the seminar on marketing strategies tomorrow?' Narrator: What does the man mean? (Q27)",
+        "option_a": "He has no interest in marketing.",
+        "option_b": "He will definitely attend the seminar.",
+        "option_c": "He is going on a trip around the world.",
+        "option_d": "He missed the seminar yesterday.",
+        "correct_answer": "B",
+        "explanation": "'I wouldn't miss it for the world' is an idiom meaning he will absolutely go.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Did you see my blue folder? I left it right here on the desk.' Woman: 'I saw Sarah taking some files to the conference room. Maybe yours was in the stack.' Narrator: What does the woman imply? (Q28)",
+        "option_a": "Sarah might have taken the folder by mistake.",
+        "option_b": "The blue folder is in the trash.",
+        "option_c": "She took the folder to the conference room.",
+        "option_d": "Sarah has a blue folder just like his.",
+        "correct_answer": "A",
+        "explanation": "The woman suggests that Sarah might have accidentally picked it up with other files.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'Yes, but it seems to jam more often.' Woman: 'The new printer in the office is so much faster than the old one.' Narrator: What is the man's opinion of the new printer? (Q29)",
+        "option_a": "It is completely useless.",
+        "option_b": "It is fast and flawless.",
+        "option_c": "It has both positive and negative aspects.",
+        "option_d": "It is worse than the old one in every way.",
+        "correct_answer": "C",
+        "explanation": "He acknowledges it's faster but points out a negative (it jams often).",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Man: 'I thought the deadline for the report was Friday.' Woman: 'It was, but the manager moved it up to Wednesday.' Narrator: What does the woman say about the deadline? (Q30)",
+        "option_a": "It has been delayed.",
+        "option_b": "It has been brought forward.",
+        "option_c": "It remains unchanged.",
+        "option_d": "It is no longer required.",
+        "correct_answer": "B",
+        "explanation": "To 'move up' a deadline means to bring it forward to an earlier date.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "What is the student's problem?",
+        "passage_text": "Questions 31-34 are based on a conversation between a student and an academic advisor. Man: 'Hi, Dr. Smith. I need some advice on my schedule for next semester.' Woman: 'Sure, what's the issue?' Man: 'Well, I want to take Advanced Calculus, but it conflicts with my Physics lab.' Woman: 'That is a problem. You need both for your major. Have you considered taking the evening section of the Physics lab?' Man: 'I didn't know there was an evening section. That would solve everything!'",
+        "option_a": "He doesn't like Physics.",
+        "option_b": "Two of his required classes are scheduled at the same time.",
+        "option_c": "He cannot find the academic advisor's office.",
+        "option_d": "He wants to change his major.",
+        "correct_answer": "B",
+        "explanation": "His Calculus class conflicts with his Physics lab.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "What does the advisor suggest?",
+        "passage_text": "Questions 31-34 are based on a conversation between a student and an academic advisor. Man: 'Hi, Dr. Smith. I need some advice on my schedule for next semester.' Woman: 'Sure, what's the issue?' Man: 'Well, I want to take Advanced Calculus, but it conflicts with my Physics lab.' Woman: 'That is a problem. You need both for your major. Have you considered taking the evening section of the Physics lab?' Man: 'I didn't know there was an evening section. That would solve everything!'",
+        "option_a": "Taking Calculus next year.",
+        "option_b": "Dropping the Physics major.",
+        "option_c": "Enrolling in an evening class.",
+        "option_d": "Speaking to the Physics professor.",
+        "correct_answer": "C",
+        "explanation": "The advisor asks if he considered the evening section of the Physics lab.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "How does the student react to the suggestion?",
+        "passage_text": "Questions 31-34 are based on a conversation between a student and an academic advisor. Man: 'Hi, Dr. Smith. I need some advice on my schedule for next semester.' Woman: 'Sure, what's the issue?' Man: 'Well, I want to take Advanced Calculus, but it conflicts with my Physics lab.' Woman: 'That is a problem. You need both for your major. Have you considered taking the evening section of the Physics lab?' Man: 'I didn't know there was an evening section. That would solve everything!'",
+        "option_a": "He is angry.",
+        "option_b": "He is relieved.",
+        "option_c": "He is confused.",
+        "option_d": "He is indifferent.",
+        "correct_answer": "B",
+        "explanation": "He says 'That would solve everything!' indicating relief.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "What will the student most likely do next?",
+        "passage_text": "Questions 31-34 are based on a conversation between a student and an academic advisor. Man: 'Hi, Dr. Smith. I need some advice on my schedule for next semester.' Woman: 'Sure, what's the issue?' Man: 'Well, I want to take Advanced Calculus, but it conflicts with my Physics lab.' Woman: 'That is a problem. You need both for your major. Have you considered taking the evening section of the Physics lab?' Man: 'I didn't know there was an evening section. That would solve everything!'",
+        "option_a": "Register for the evening Physics lab.",
+        "option_b": "Drop Advanced Calculus.",
+        "option_c": "Change his major.",
+        "option_d": "Go to sleep.",
+        "correct_answer": "A",
+        "explanation": "Since it solves his problem, he will likely register for it.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "What are the speakers discussing?",
+        "passage_text": "Questions 35-38 are based on a conversation about a group project. Woman: 'We really need to get started on our presentation for history class.' Man: 'I know. The deadline is next Monday. Have you done any research on the French Revolution yet?' Woman: 'I've read a few chapters in the textbook, but we need more sources. I was thinking of going to the library tonight.' Man: 'Great idea. I'll come with you. Let's focus on the causes of the revolution first.'",
+        "option_a": "A history presentation",
+        "option_b": "A trip to France",
+        "option_c": "A book they just read",
+        "option_d": "Their weekend plans",
+        "correct_answer": "A",
+        "explanation": "They are discussing getting started on a presentation for history class.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "When is the project due?",
+        "passage_text": "Questions 35-38 are based on a conversation about a group project. Woman: 'We really need to get started on our presentation for history class.' Man: 'I know. The deadline is next Monday. Have you done any research on the French Revolution yet?' Woman: 'I've read a few chapters in the textbook, but we need more sources. I was thinking of going to the library tonight.' Man: 'Great idea. I'll come with you. Let's focus on the causes of the revolution first.'",
+        "option_a": "Tonight",
+        "option_b": "Tomorrow",
+        "option_c": "Next Monday",
+        "option_d": "Next month",
+        "correct_answer": "C",
+        "explanation": "The man states, 'The deadline is next Monday.'",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "Where are they going tonight?",
+        "passage_text": "Questions 35-38 are based on a conversation about a group project. Woman: 'We really need to get started on our presentation for history class.' Man: 'I know. The deadline is next Monday. Have you done any research on the French Revolution yet?' Woman: 'I've read a few chapters in the textbook, but we need more sources. I was thinking of going to the library tonight.' Man: 'Great idea. I'll come with you. Let's focus on the causes of the revolution first.'",
+        "option_a": "To a French restaurant",
+        "option_b": "To the library",
+        "option_c": "To a history museum",
+        "option_d": "To a party",
+        "correct_answer": "B",
+        "explanation": "The woman says she's going to the library tonight, and the man agrees to come.",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "What aspect of the topic will they focus on first?",
+        "passage_text": "Questions 35-38 are based on a conversation about a group project. Woman: 'We really need to get started on our presentation for history class.' Man: 'I know. The deadline is next Monday. Have you done any research on the French Revolution yet?' Woman: 'I've read a few chapters in the textbook, but we need more sources. I was thinking of going to the library tonight.' Man: 'Great idea. I'll come with you. Let's focus on the causes of the revolution first.'",
+        "option_a": "The aftermath of the revolution",
+        "option_b": "The causes of the revolution",
+        "option_c": "The key figures of the revolution",
+        "option_d": "The economic impact",
+        "correct_answer": "B",
+        "explanation": "The man suggests: 'Let's focus on the causes of the revolution first.'",
+        "difficulty": "medium"
+    },
+    {
+        "question_text": "What is the main topic of the lecture?",
+        "passage_text": "Questions 39-42 are based on a lecture in an astronomy class. Professor: 'Today we'll discuss the lifecycle of stars. A star begins its life in a nebula, which is a massive cloud of gas and dust. Gravity causes the gas to clump together, forming a protostar. As the protostar shrinks, its core gets hotter. Once the core temperature reaches about 10 million degrees Celsius, nuclear fusion begins. This is the process where hydrogen atoms combine to form helium, releasing an enormous amount of energy. This energy pushes outward, balancing the inward pull of gravity, and the star becomes a main-sequence star, much like our Sun. Stars spend the vast majority of their lives in this stable phase.'",
+        "option_a": "The planets in our solar system",
+        "option_b": "The lifecycle of stars",
+        "option_c": "The history of astronomy",
+        "option_d": "The composition of nebulas",
+        "correct_answer": "B",
+        "explanation": "The professor says, 'Today we'll discuss the lifecycle of stars.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "What is a nebula?",
+        "passage_text": "Questions 39-42 are based on a lecture in an astronomy class. Professor: 'Today we'll discuss the lifecycle of stars. A star begins its life in a nebula, which is a massive cloud of gas and dust. Gravity causes the gas to clump together, forming a protostar. As the protostar shrinks, its core gets hotter. Once the core temperature reaches about 10 million degrees Celsius, nuclear fusion begins. This is the process where hydrogen atoms combine to form helium, releasing an enormous amount of energy. This energy pushes outward, balancing the inward pull of gravity, and the star becomes a main-sequence star, much like our Sun. Stars spend the vast majority of their lives in this stable phase.'",
+        "option_a": "A dying star",
+        "option_b": "A massive cloud of gas and dust",
+        "option_c": "A type of planet",
+        "option_d": "A black hole",
+        "correct_answer": "B",
+        "explanation": "A nebula is described as 'a massive cloud of gas and dust.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "What process begins when the core temperature reaches 10 million degrees?",
+        "passage_text": "Questions 39-42 are based on a lecture in an astronomy class. Professor: 'Today we'll discuss the lifecycle of stars. A star begins its life in a nebula, which is a massive cloud of gas and dust. Gravity causes the gas to clump together, forming a protostar. As the protostar shrinks, its core gets hotter. Once the core temperature reaches about 10 million degrees Celsius, nuclear fusion begins. This is the process where hydrogen atoms combine to form helium, releasing an enormous amount of energy. This energy pushes outward, balancing the inward pull of gravity, and the star becomes a main-sequence star, much like our Sun. Stars spend the vast majority of their lives in this stable phase.'",
+        "option_a": "Nuclear fission",
+        "option_b": "Supernova explosion",
+        "option_c": "Nuclear fusion",
+        "option_d": "Photosynthesis",
+        "correct_answer": "C",
+        "explanation": "The lecture states, 'Once the core temperature reaches about 10 million degrees Celsius, nuclear fusion begins.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "According to the professor, what phase do stars spend most of their lives in?",
+        "passage_text": "Questions 39-42 are based on a lecture in an astronomy class. Professor: 'Today we'll discuss the lifecycle of stars. A star begins its life in a nebula, which is a massive cloud of gas and dust. Gravity causes the gas to clump together, forming a protostar. As the protostar shrinks, its core gets hotter. Once the core temperature reaches about 10 million degrees Celsius, nuclear fusion begins. This is the process where hydrogen atoms combine to form helium, releasing an enormous amount of energy. This energy pushes outward, balancing the inward pull of gravity, and the star becomes a main-sequence star, much like our Sun. Stars spend the vast majority of their lives in this stable phase.'",
+        "option_a": "The nebula phase",
+        "option_b": "The protostar phase",
+        "option_c": "The main-sequence phase",
+        "option_d": "The supernova phase",
+        "correct_answer": "C",
+        "explanation": "The professor notes, 'Stars spend the vast majority of their lives in this stable phase (main-sequence).'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "What is an urban heat island?",
+        "passage_text": "Questions 43-46 are based on a talk in an environmental science class. Speaker: 'Urban heat islands are metropolitan areas that are significantly warmer than their surrounding rural areas. This temperature difference is primarily due to human activities and modifications to land surfaces. Buildings, roads, and other infrastructure absorb and re-emit the sun's heat more than natural landscapes such as forests and water bodies. Additionally, human activities like driving cars and using air conditioning generate waste heat, which contributes to the warming effect. To mitigate urban heat islands, cities are increasingly adopting strategies like planting more trees, creating green roofs, and using reflective materials for pavements and buildings.'",
+        "option_a": "A tropical island city",
+        "option_b": "A metropolitan area warmer than surrounding rural areas",
+        "option_c": "A rural area experiencing a heatwave",
+        "option_d": "An island formed by volcanic activity",
+        "correct_answer": "B",
+        "explanation": "It is defined as 'metropolitan areas that are significantly warmer than their surrounding rural areas.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "Why do buildings and roads contribute to the urban heat island effect?",
+        "passage_text": "Questions 43-46 are based on a talk in an environmental science class. Speaker: 'Urban heat islands are metropolitan areas that are significantly warmer than their surrounding rural areas. This temperature difference is primarily due to human activities and modifications to land surfaces. Buildings, roads, and other infrastructure absorb and re-emit the sun's heat more than natural landscapes such as forests and water bodies. Additionally, human activities like driving cars and using air conditioning generate waste heat, which contributes to the warming effect. To mitigate urban heat islands, cities are increasingly adopting strategies like planting more trees, creating green roofs, and using reflective materials for pavements and buildings.'",
+        "option_a": "They produce waste heat.",
+        "option_b": "They absorb and re-emit the sun's heat.",
+        "option_c": "They block the wind.",
+        "option_d": "They reflect sunlight away.",
+        "correct_answer": "B",
+        "explanation": "Buildings and roads 'absorb and re-emit the sun's heat more than natural landscapes.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "Which of the following generates waste heat according to the talk?",
+        "passage_text": "Questions 43-46 are based on a talk in an environmental science class. Speaker: 'Urban heat islands are metropolitan areas that are significantly warmer than their surrounding rural areas. This temperature difference is primarily due to human activities and modifications to land surfaces. Buildings, roads, and other infrastructure absorb and re-emit the sun's heat more than natural landscapes such as forests and water bodies. Additionally, human activities like driving cars and using air conditioning generate waste heat, which contributes to the warming effect. To mitigate urban heat islands, cities are increasingly adopting strategies like planting more trees, creating green roofs, and using reflective materials for pavements and buildings.'",
+        "option_a": "Planting trees",
+        "option_b": "Using air conditioning",
+        "option_c": "Green roofs",
+        "option_d": "Reflective materials",
+        "correct_answer": "B",
+        "explanation": "The speaker mentions 'human activities like driving cars and using air conditioning generate waste heat.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "What is one strategy cities are using to combat this issue?",
+        "passage_text": "Questions 43-46 are based on a talk in an environmental science class. Speaker: 'Urban heat islands are metropolitan areas that are significantly warmer than their surrounding rural areas. This temperature difference is primarily due to human activities and modifications to land surfaces. Buildings, roads, and other infrastructure absorb and re-emit the sun's heat more than natural landscapes such as forests and water bodies. Additionally, human activities like driving cars and using air conditioning generate waste heat, which contributes to the warming effect. To mitigate urban heat islands, cities are increasingly adopting strategies like planting more trees, creating green roofs, and using reflective materials for pavements and buildings.'",
+        "option_a": "Building taller skyscrapers",
+        "option_b": "Paving over natural landscapes",
+        "option_c": "Creating green roofs",
+        "option_d": "Banning cars entirely",
+        "correct_answer": "C",
+        "explanation": "Creating green roofs is mentioned as a strategy to mitigate urban heat islands.",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "What are the three stages of memory discussed?",
+        "passage_text": "Questions 47-50 are based on a lecture in a psychology class. Professor: 'Memory is typically divided into three stages: sensory memory, short-term memory, and long-term memory. Sensory memory holds information from the senses for a fraction of a second. If we pay attention to that information, it moves into short-term memory, which can hold about seven items for 20 to 30 seconds. To transfer information from short-term to long-term memory, which has a virtually unlimited capacity and duration, we use processes like rehearsal and elaboration. Rehearsal involves simply repeating the information, while elaboration involves connecting new information to existing knowledge, making it much more likely to be remembered.'",
+        "option_a": "Visual, auditory, and kinesthetic",
+        "option_b": "Past, present, and future",
+        "option_c": "Sensory, short-term, and long-term",
+        "option_d": "Conscious, subconscious, and unconscious",
+        "correct_answer": "C",
+        "explanation": "The three stages are 'sensory memory, short-term memory, and long-term memory.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "How long does short-term memory typically hold information?",
+        "passage_text": "Questions 47-50 are based on a lecture in a psychology class. Professor: 'Memory is typically divided into three stages: sensory memory, short-term memory, and long-term memory. Sensory memory holds information from the senses for a fraction of a second. If we pay attention to that information, it moves into short-term memory, which can hold about seven items for 20 to 30 seconds. To transfer information from short-term to long-term memory, which has a virtually unlimited capacity and duration, we use processes like rehearsal and elaboration. Rehearsal involves simply repeating the information, while elaboration involves connecting new information to existing knowledge, making it much more likely to be remembered.'",
+        "option_a": "A fraction of a second",
+        "option_b": "20 to 30 seconds",
+        "option_c": "Several hours",
+        "option_d": "A lifetime",
+        "correct_answer": "B",
+        "explanation": "Short-term memory 'can hold about seven items for 20 to 30 seconds.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "What does the process of elaboration involve?",
+        "passage_text": "Questions 47-50 are based on a lecture in a psychology class. Professor: 'Memory is typically divided into three stages: sensory memory, short-term memory, and long-term memory. Sensory memory holds information from the senses for a fraction of a second. If we pay attention to that information, it moves into short-term memory, which can hold about seven items for 20 to 30 seconds. To transfer information from short-term to long-term memory, which has a virtually unlimited capacity and duration, we use processes like rehearsal and elaboration. Rehearsal involves simply repeating the information, while elaboration involves connecting new information to existing knowledge, making it much more likely to be remembered.'",
+        "option_a": "Simply repeating the information",
+        "option_b": "Ignoring irrelevant details",
+        "option_c": "Connecting new information to existing knowledge",
+        "option_d": "Storing information in sensory memory",
+        "correct_answer": "C",
+        "explanation": "Elaboration 'involves connecting new information to existing knowledge.'",
+        "difficulty": "hard"
+    },
+    {
+        "question_text": "Which memory stage has a virtually unlimited capacity?",
+        "passage_text": "Questions 47-50 are based on a lecture in a psychology class. Professor: 'Memory is typically divided into three stages: sensory memory, short-term memory, and long-term memory. Sensory memory holds information from the senses for a fraction of a second. If we pay attention to that information, it moves into short-term memory, which can hold about seven items for 20 to 30 seconds. To transfer information from short-term to long-term memory, which has a virtually unlimited capacity and duration, we use processes like rehearsal and elaboration. Rehearsal involves simply repeating the information, while elaboration involves connecting new information to existing knowledge, making it much more likely to be remembered.'",
+        "option_a": "Sensory memory",
+        "option_b": "Short-term memory",
+        "option_c": "Long-term memory",
+        "option_d": "All of them",
+        "correct_answer": "C",
+        "explanation": "Long-term memory is described as having 'a virtually unlimited capacity and duration.'",
+        "difficulty": "hard"
+    }
+]
