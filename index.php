@@ -44,13 +44,13 @@ include __DIR__ . '/includes/navbar.php';
     <div class="hero-content">
       <div class="hero-eyebrow">
         <i class="fas fa-star" style="font-size:0.7rem;"></i>
-        Platform TOEFL #1 Indonesia
+        Platform TOEFL #1
       </div>
       <h1 class="hero-title">
         Raih Skor TOEFL <span>Impianmu</span> Bersama Kami
       </h1>
       <p class="hero-subtitle">
-        Platform belajar TOEFL terlengkap dengan 12 materi terstruktur, latihan soal interaktif, mini test, dan full test 100 soal. Belajar mandiri, efektif, dan menyenangkan!
+        Tingkatkan skor TOEFL Anda dengan platform simulasi terlengkap. Nikmati puluhan materi terstruktur, latihan soal interaktif, serta simulasi ujian komprehensif 140 soal sesuai standar resmi TOEFL ITP!
       </p>
       <div class="hero-actions">
         <a href="pages/register.php" class="btn btn-primary btn-lg">

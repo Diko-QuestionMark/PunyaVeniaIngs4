@@ -156,10 +156,17 @@ body { background:#F1F5F9; }
     </div>
     <?php endif; ?>
     <div class="options-list">
-      <?php foreach(['A','B','C','D'] as $opt): $key='option_'.strtolower($opt); ?>
+      <?php 
+        $opts = ['A','B','C','D'];
+        shuffle($opts);
+        $labels = ['A','B','C','D'];
+        foreach($opts as $idx => $opt): 
+        $key = 'option_'.strtolower($opt); 
+        $display = $labels[$idx];
+      ?>
       <label class="option-item" onclick="this.parentElement.querySelectorAll('.option-item').forEach(x=>x.classList.remove('selected'));this.classList.add('selected');">
         <input type="radio" name="answers[<?= $q['id'] ?>]" value="<?= $opt ?>" style="display:none;">
-        <div class="option-key"><?= $opt ?></div>
+        <div class="option-key"><?= $display ?></div>
         <div class="option-text"><?= sanitize($q[$key]) ?></div>
       </label>
       <?php endforeach; ?>

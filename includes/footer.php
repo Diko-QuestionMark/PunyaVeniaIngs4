@@ -26,7 +26,7 @@
       <h5>Latihan</h5>
       <div class="footer-links">
         <a href="<?= SITE_URL ?>/pages/tests.php?type=mini">Mini Test</a>
-        <a href="<?= SITE_URL ?>/pages/tests.php?type=full">Full Test (100 Soal)</a>
+        <a href="<?= SITE_URL ?>/pages/tests.php?type=full">Full Test (140 Soal)</a>
         <a href="<?= SITE_URL ?>/pages/tests.php">Semua Latihan</a>
       </div>
     </div>

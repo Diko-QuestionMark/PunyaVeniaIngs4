@@ -152,12 +152,17 @@ body { background: #F1F5F9; }
     <?php endif; ?>
 
     <div class="options-list">
-      <?php foreach(['A','B','C','D'] as $opt):
+      <?php 
+        $opts = ['A','B','C','D'];
+        shuffle($opts);
+        $labels = ['A','B','C','D'];
+        foreach($opts as $idx => $opt):
         $key = 'option_'.strtolower($opt);
+        $display = $labels[$idx];
       ?>
       <label class="option-item" id="opt-<?= $i ?>-<?= $opt ?>" onclick="selectOption(<?= $i ?>,'<?= $q['id'] ?>','<?= $opt ?>')">
         <input type="radio" name="answers[<?= $q['id'] ?>]" value="<?= $opt ?>" style="display:none;">
-        <div class="option-key"><?= $opt ?></div>
+        <div class="option-key"><?= $display ?></div>
         <div class="option-text"><?= sanitize($q[$key]) ?></div>
       </label>
       <?php endforeach; ?>
