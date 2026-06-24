@@ -59,19 +59,19 @@ include __DIR__ . '/includes/navbar.php';
       </div>
       <div class="hero-stats">
         <div class="hero-stat-item">
-          <span class="hero-stat-num"><?= number_format($totalMaterials) ?>+</span>
+          <span class="hero-stat-num"><?= number_format($totalMaterials) ?></span>
           <span class="hero-stat-label">Materi</span>
         </div>
         <div class="hero-stat-item">
-          <span class="hero-stat-num"><?= number_format($totalQuestions) ?>+</span>
+          <span class="hero-stat-num"><?= number_format($totalQuestions) ?></span>
           <span class="hero-stat-label">Soal Latihan</span>
         </div>
         <div class="hero-stat-item">
-          <span class="hero-stat-num"><?= number_format($totalTests) ?>+</span>
+          <span class="hero-stat-num"><?= number_format($totalTests) ?></span>
           <span class="hero-stat-label">Test Tersedia</span>
         </div>
         <div class="hero-stat-item">
-          <span class="hero-stat-num"><?= number_format($totalUsers) ?>+</span>
+          <span class="hero-stat-num"><?= number_format($totalUsers) ?></span>
           <span class="hero-stat-label">Pengguna</span>
         </div>
       </div>

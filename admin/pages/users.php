@@ -41,45 +41,47 @@ include '../includes/header.php';
   <div class="admin-table-header">
     <div class="admin-table-title">👥 Daftar Pengguna</div>
   </div>
-  <table class="admin-table">
-    <thead><tr>
-      <th>#</th><th>Nama</th><th>Username</th><th>Email</th><th>Total Test</th><th>Skor Terbaik</th><th>Bergabung</th><th>Aksi</th>
-    </tr></thead>
-    <tbody>
-    <?php if(empty($users)): ?>
-    <tr><td colspan="8" style="text-align:center;padding:40px;color:#94A3B8;">
-      <?= $search ? 'Pengguna tidak ditemukan.' : 'Belum ada pengguna terdaftar.' ?>
-    </td></tr>
-    <?php else: foreach($users as $i=>$u): ?>
-    <tr>
-      <td style="color:#94A3B8;"><?= $i+1 ?></td>
-      <td>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;font-weight:700;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <?= strtoupper(substr($u['full_name']?:$u['username'],0,1)) ?>
+  <div style="overflow-x: auto;">
+    <table class="admin-table">
+      <thead><tr>
+        <th>#</th><th style="min-width: 200px;">Nama</th><th style="min-width: 150px;">Username</th><th style="min-width: 200px;">Email</th><th>Total Test</th><th>Skor Terbaik</th><th style="min-width: 100px;">Bergabung</th><th>Aksi</th>
+      </tr></thead>
+      <tbody>
+      <?php if(empty($users)): ?>
+      <tr><td colspan="8" style="text-align:center;padding:40px;color:#94A3B8;">
+        <?= $search ? 'Pengguna tidak ditemukan.' : 'Belum ada pengguna terdaftar.' ?>
+      </td></tr>
+      <?php else: foreach($users as $i=>$u): ?>
+      <tr>
+        <td style="color:#94A3B8;"><?= $i+1 ?></td>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;font-weight:700;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <?= strtoupper(substr($u['full_name']?:$u['username'],0,1)) ?>
+            </div>
+            <strong><?= sanitize($u['full_name'] ?: '-') ?></strong>
           </div>
-          <strong><?= sanitize($u['full_name'] ?: '-') ?></strong>
-        </div>
-      </td>
-      <td style="color:#64748B;">@<?= sanitize($u['username']) ?></td>
-      <td style="color:#64748B;font-size:0.85rem;"><?= sanitize($u['email']) ?></td>
-      <td style="text-align:center;"><strong style="color:#2563EB;"><?= $u['total_tests'] ?></strong></td>
-      <td style="text-align:center;">
-        <?php if($u['best_score']): ?>
-        <span style="font-weight:700;color:<?= $u['best_score']>=500?'#10B981':'#F59E0B' ?>;"><?= $u['best_score'] ?></span>
-        <?php else: ?><span style="color:#94A3B8;">-</span><?php endif; ?>
-      </td>
-      <td style="color:#94A3B8;font-size:0.8rem;"><?= date('d M Y',strtotime($u['created_at'])) ?></td>
-      <td>
-        <div style="display:flex;gap:6px;">
-          <a href="<?= SITE_URL ?>/admin/pages/results.php?user_id=<?= $u['id'] ?>" class="btn btn-secondary btn-sm" title="Lihat Hasil Test"><i class="fas fa-chart-bar"></i></a>
-          <a href="?action=delete&id=<?= $u['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus pengguna <?= sanitize($u['username']) ?>? Semua data hasil testnya juga akan terhapus.')"><i class="fas fa-trash"></i></a>
-        </div>
-      </td>
-    </tr>
-    <?php endforeach; endif; ?>
-    </tbody>
-  </table>
+        </td>
+        <td style="color:#64748B; word-break: break-word;">@<?= sanitize($u['username']) ?></td>
+        <td style="color:#64748B;font-size:0.85rem; word-break: break-all;"><?= sanitize($u['email']) ?></td>
+        <td style="text-align:center;"><strong style="color:#2563EB;"><?= $u['total_tests'] ?></strong></td>
+        <td style="text-align:center;">
+          <?php if($u['best_score']): ?>
+          <span style="font-weight:700;color:<?= $u['best_score']>=500?'#10B981':'#F59E0B' ?>;"><?= $u['best_score'] ?></span>
+          <?php else: ?><span style="color:#94A3B8;">-</span><?php endif; ?>
+        </td>
+        <td style="color:#94A3B8;font-size:0.8rem;"><?= date('d M Y',strtotime($u['created_at'])) ?></td>
+        <td>
+          <div style="display:flex;gap:6px;">
+            <a href="<?= SITE_URL ?>/admin/pages/results.php?user_id=<?= $u['id'] ?>" class="btn btn-secondary btn-sm" title="Lihat Hasil Test"><i class="fas fa-chart-bar"></i></a>
+            <a href="?action=delete&id=<?= $u['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus pengguna <?= sanitize($u['username']) ?>? Semua data hasil testnya juga akan terhapus.')"><i class="fas fa-trash"></i></a>
+          </div>
+        </td>
+      </tr>
+      <?php endforeach; endif; ?>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <?php include '../includes/footer.php'; ?>

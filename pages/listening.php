@@ -42,23 +42,6 @@ $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.
 </div>
 
 <div style="max-width:1200px;margin:0 auto;padding:50px 5% 80px;">
-  <!-- Info Cards -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;">
-    <?php $parts=[
-      ['Part A','Short Conversations','Percakapan singkat 2 orang','30 soal','🗣️','#DBEAFE','#1D4ED8'],
-      ['Part B','Long Conversations','Percakapan panjang beberapa giliran','8 soal','💬','#EDE9FE','#6D28D9'],
-      ['Part C','Lectures & Talks','Ceramah akademik & pidato','12 soal','🎤','#D1FAE5','#065F46'],
-    ];
-    foreach($parts as $p): ?>
-    <div style="background:<?= $p[5] ?>;border-radius:16px;padding:22px;border:1px solid <?= $p[5] ?>;">
-      <div style="font-size:1.5rem;margin-bottom:8px;"><?= $p[4] ?></div>
-      <div style="font-size:0.72rem;font-weight:700;color:<?= $p[6] ?>;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;"><?= $p[0] ?></div>
-      <div style="font-size:1rem;font-weight:700;color:#0F172A;margin-bottom:4px;"><?= $p[1] ?></div>
-      <div style="font-size:0.82rem;color:#64748B;margin-bottom:10px;"><?= $p[2] ?></div>
-      <div style="font-size:0.78rem;font-weight:700;color:<?= $p[6] ?>;"><strong><?= $p[3] ?></strong></div>
-    </div>
-    <?php endforeach; ?>
-  </div>
 
   <!-- Materials -->
   <?php if(!empty($materials)): ?>
