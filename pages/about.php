@@ -12,7 +12,7 @@
 
 <div style="padding-top:70px;">
   <!-- Hero -->
-  <div style="background:linear-gradient(135deg,#0F172A,#1E293B);padding:80px 5%;text-align:center;">
+  <div style="background:linear-gradient(135deg,#0F172A,#1E293B);padding:80px 5%;text-align:center;" data-aos="fade-down">
     <div style="width:80px;height:80px;background:linear-gradient(135deg,#2563EB,#7C3AED);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:900;color:white;margin:0 auto 20px;">T</div>
     <h1 style="color:white;font-size:2rem;margin-bottom:12px;">Tentang TOEFLMaster</h1>
     <p style="color:#94A3B8;max-width:580px;margin:0 auto;font-size:0.95rem;line-height:1.7;">
@@ -23,7 +23,7 @@
   <div style="max-width:900px;margin:0 auto;padding:60px 5% 80px;">
 
     <!-- About Platform -->
-    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
+    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;" data-aos="fade-up">
       <h2 style="font-size:1.2rem;margin-bottom:16px;">🎯 Tentang Platform</h2>
       <p style="color:#475569;line-height:1.8;font-size:0.95rem;margin-bottom:14px;">
         <strong>TOEFLMaster</strong> adalah platform e-learning yang dikembangkan sebagai proyek tugas akhir mata kuliah Pemrograman Web. Platform ini dirancang untuk membantu mahasiswa mempersiapkan ujian <strong>TOEFL ITP (Institutional Testing Program)</strong> dengan pendekatan belajar yang terstruktur dan interaktif.
@@ -32,7 +32,7 @@
         Website ini menyediakan materi pembelajaran yang lengkap, latihan soal per materi, mini test, serta simulasi full test 100 soal yang mendekati kondisi ujian TOEFL sesungguhnya. Seluruh konten dikelola oleh admin melalui panel manajemen yang mudah digunakan.
       </p>
     </div>
-    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
+    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;" data-aos="fade-up">
       <h2 style="font-size:1.2rem;margin-bottom:16px;">👥 Kelompok Kami</h2>
       <ul style="list-style:none;padding-left:0;color:#475569;font-size:0.95rem;line-height:1.6;">
         <li>1. Chelsea Germany</li>
@@ -45,7 +45,7 @@
     </div>
 
     <!-- Features Summary -->
-    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
+    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;" data-aos="fade-up">
       <h2 style="font-size:1.2rem;margin-bottom:20px;">✨ Fitur Platform</h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <?php $features = [
@@ -58,8 +58,8 @@
           ['👨‍💼','Admin Panel','Admin dapat menambah, mengedit, dan menghapus materi & soal'],
           ['🔊','Audio Listening','Dukungan file audio untuk soal Listening Comprehension'],
         ];
-        foreach($features as [$icon,$title,$desc]): ?>
-        <div style="display:flex;gap:12px;padding:16px;background:#F8FAFC;border-radius:12px;">
+        foreach($features as $index => [$icon,$title,$desc]): ?>
+        <div style="display:flex;gap:12px;padding:16px;background:#F8FAFC;border-radius:12px;" data-aos="zoom-in" data-aos-delay="<?= $index * 50 ?>">
           <span style="font-size:1.3rem;flex-shrink:0;"><?= $icon ?></span>
           <div>
             <div style="font-weight:700;font-size:0.875rem;color:#0F172A;margin-bottom:4px;"><?= $title ?></div>
@@ -71,7 +71,7 @@
     </div>
 
     <!-- TOEFL ITP Info -->
-    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
+    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;" data-aos="fade-up">
       <h2 style="font-size:1.2rem;margin-bottom:20px;">📋 Tentang TOEFL ITP</h2>
       <p style="color:#475569;line-height:1.8;font-size:0.9rem;margin-bottom:20px;">
         TOEFL ITP (Institutional Testing Program) adalah tes kemampuan bahasa Inggris yang diakui secara internasional. Tes ini sering digunakan sebagai syarat kelulusan, beasiswa, atau penerimaan di perguruan tinggi.
@@ -98,7 +98,7 @@
     </div>
 
     <!-- Tech Stack -->
-    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;">
+    <div style="background:white;border-radius:20px;border:1px solid #E2E8F0;padding:36px;margin-bottom:24px;" data-aos="fade-up">
       <h2 style="font-size:1.2rem;margin-bottom:16px;">🛠️ Teknologi yang Digunakan</h2>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
         <?php $tech=[
@@ -106,14 +106,14 @@
           ['CSS3','#3B82F6'],['JavaScript ES6+','#EAB308'],['Font: Poppins','#8B5CF6'],
           ['Font Awesome','#10B981'],['PDO Database','#64748B'],['Responsive Design','#EC4899'],
         ];
-        foreach($tech as [$name,$color]): ?>
-        <span style="background:<?= $color ?>20;color:<?= $color ?>;border:1px solid <?= $color ?>40;padding:6px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;"><?= $name ?></span>
+        foreach($tech as $index => [$name,$color]): ?>
+        <span style="background:<?= $color ?>20;color:<?= $color ?>;border:1px solid <?= $color ?>40;padding:6px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>"><?= $name ?></span>
         <?php endforeach; ?>
       </div>
     </div>
 
     <!-- CTA -->
-    <div style="background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border-radius:20px;padding:36px;text-align:center;border:1px solid #BFDBFE;">
+    <div style="background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border-radius:20px;padding:36px;text-align:center;border:1px solid #BFDBFE;" data-aos="fade-up">
       <h3 style="font-size:1.1rem;margin-bottom:8px;">🚀 Siap Mulai Belajar?</h3>
       <p style="color:#64748B;font-size:0.9rem;margin-bottom:20px;">Daftar sekarang dan akses semua materi serta latihan soal secara gratis.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">

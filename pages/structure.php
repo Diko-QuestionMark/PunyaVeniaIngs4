@@ -21,7 +21,7 @@ $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mi
 <div style="background:linear-gradient(135deg,#4C1D95,#6D28D9,#7C3AED);padding:70px 5% 60px;position:relative;overflow:hidden;">
   <div style="position:absolute;top:-40px;right:-40px;width:300px;height:300px;background:rgba(255,255,255,0.03);border-radius:50%;"></div>
   <div style="position:absolute;bottom:-60px;left:10%;width:200px;height:200px;background:rgba(255,255,255,0.04);border-radius:50%;"></div>
-  <div style="max-width:900px;margin:0 auto;position:relative;">
+  <div style="max-width:900px;margin:0 auto;position:relative;" data-aos="fade-up">
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:20px;">
       <div style="width:64px;height:64px;background:rgba(255,255,255,0.15);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📝</div>
       <div>
@@ -43,11 +43,11 @@ $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mi
 
 
   <?php if(!empty($materials)): ?>
-  <div style="margin-bottom:48px;">
+  <div style="margin-bottom:48px;" data-aos="fade-up">
     <h2 style="font-size:1.2rem;margin-bottom:20px;">📚 Materi Structure (<?= count($materials) ?>)</h2>
     <div class="materials-grid">
-      <?php foreach($materials as $m): ?>
-      <a href="<?= SITE_URL ?>/pages/material.php?slug=<?= urlencode($m['slug']) ?>" class="material-card">
+      <?php foreach($materials as $index => $m): ?>
+      <a href="<?= SITE_URL ?>/pages/material.php?slug=<?= urlencode($m['slug']) ?>" class="material-card" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
         <div class="material-badge badge-structure">📝 <?= sanitize($m['cat_name']) ?></div>
         <h4><?= sanitize($m['title']) ?></h4>
         <p><?= sanitize($m['summary'] ?: 'Materi grammar tata bahasa Inggris untuk TOEFL Structure.') ?></p>
@@ -62,11 +62,11 @@ $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mi
   <?php endif; ?>
 
   <?php if(!empty($miniTests)): ?>
-  <div style="margin-bottom:40px;">
+  <div style="margin-bottom:40px;" data-aos="fade-up">
     <h2 style="font-size:1.2rem;margin-bottom:20px;">⚡ Mini Test Structure</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
-      <?php foreach($miniTests as $t): ?>
-      <div class="test-card">
+      <?php foreach($miniTests as $index => $t): ?>
+      <div class="test-card" data-aos="zoom-in" data-aos-delay="<?= $index * 50 ?>">
         <div class="test-type-badge badge-mini">⚡ Mini Test</div>
         <h3><?= sanitize($t['title']) ?></h3>
         <p style="color:#64748B;font-size:0.85rem;flex:1;"><?= sanitize($t['description'] ?: '') ?></p>
@@ -78,7 +78,7 @@ $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mi
   </div>
   <?php endif; ?>
 
-  <div style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border-radius:20px;padding:28px 32px;border:1px solid #DDD6FE;">
+  <div style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border-radius:20px;padding:28px 32px;border:1px solid #DDD6FE;" data-aos="fade-up">
     <h3 style="font-size:1rem;color:#6D28D9;margin-bottom:12px;">💡 Tips Sukses Structure TOEFL</h3>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
       <?php $tips=['Kuasai pola Subject-Verb Agreement terlebih dahulu','Pelajari penggunaan Relative Clause (who, which, that)','Perhatikan Parallel Structure dalam kalimat','Pahami perbedaan Active vs Passive Voice','Kenali error tipe umum: Articles, Prepositions, Conjunctions','Latihan soal Error ID dengan membaca kalimat teliti kata per kata'];

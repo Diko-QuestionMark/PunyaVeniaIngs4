@@ -46,16 +46,11 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-// Fade in animation on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(el => {
-    if (el.isIntersecting) el.target.style.opacity = '1';
+  AOS.init({
+    duration: 500,
+    once: true,
+    offset: 50
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in-up').forEach(el => {
-  el.style.opacity = '0';
-  observer.observe(el);
-});
 </script>

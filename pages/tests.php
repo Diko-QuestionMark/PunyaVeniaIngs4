@@ -22,7 +22,7 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
 
 <div style="padding-top:90px;">
   <!-- Page Header -->
-  <div style="background:linear-gradient(135deg,#1E293B,#0F172A);padding:60px 5% 50px;text-align:center;">
+  <div style="background:linear-gradient(135deg,#1E293B,#0F172A);padding:60px 5% 50px;text-align:center;" data-aos="fade-down">
     <div style="display:inline-block;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);color:#60A5FA;padding:6px 16px;border-radius:100px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;">Latihan Soal</div>
     <h1 style="color:white;font-size:2rem;margin-bottom:12px;">Pilih Mode Latihan</h1>
     <p style="color:#94A3B8;font-size:1rem;max-width:500px;margin:0 auto;">Mini Test untuk latihan harian, Full Test untuk simulasi TOEFL sesungguhnya.</p>
@@ -38,7 +38,7 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
     <?php if(!$type || $type==='full'): ?>
     <!-- FULL TESTS -->
     <div style="margin-bottom:48px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;" data-aos="fade-right">
         <div style="width:44px;height:44px;background:#EDE9FE;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🏆</div>
         <div>
           <h2 style="font-size:1.2rem;margin-bottom:2px;">Full Test — Simulasi TOEFL</h2>
@@ -46,8 +46,8 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;">
-        <?php foreach($fullTests as $t): ?>
-        <div class="test-card">
+        <?php foreach($fullTests as $index => $t): ?>
+        <div class="test-card" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
           <div class="test-type-badge badge-full">🏆 Full Test</div>
           <h3><?= sanitize($t['title']) ?></h3>
           <p><?= sanitize($t['description'] ?: 'Simulasi TOEFL lengkap dengan '.$t['total_questions'].' soal mencakup semua bagian.') ?></p>
@@ -72,7 +72,7 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
     <?php if(!$type || $type==='mini'): ?>
     <!-- MINI TESTS -->
     <div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;" data-aos="fade-right">
         <div style="width:44px;height:44px;background:#FEF3C7;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;">⚡</div>
         <div>
           <h2 style="font-size:1.2rem;margin-bottom:2px;">Mini Test — Latihan Fokus</h2>
@@ -80,8 +80,8 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
-        <?php foreach($miniTests as $t): ?>
-        <div class="test-card">
+        <?php foreach($miniTests as $index => $t): ?>
+        <div class="test-card" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
           <div class="test-type-badge badge-mini">⚡ Mini Test</div>
           <h3><?= sanitize($t['title']) ?></h3>
           <p><?= sanitize($t['description'] ?: 'Latihan terfokus dengan '.$t['total_questions'].' soal pilihan.') ?></p>
