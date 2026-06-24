@@ -114,7 +114,7 @@ if ($action === 'add') {
     if ($cat_filter) { $where[] = "q.category_id=?"; $params[] = $cat_filter; }
     if ($search)  { $where[] = "q.question_text LIKE ?"; $params[] = "%$search%"; }
     $whereSQL = $where ? 'WHERE '.implode(' AND ',$where) : '';
-    $stmt = $db->prepare("SELECT q.*,c.name as cat_name FROM questions q LEFT JOIN categories c ON q.category_id=c.id $whereSQL ORDER BY q.id DESC");
+    $stmt = $db->prepare("SELECT q.*,c.name as cat_name, (SELECT COUNT(*) FROM question_audios qa WHERE qa.question_id=q.id) as audio_count FROM questions q LEFT JOIN categories c ON q.category_id=c.id $whereSQL ORDER BY q.id DESC");
     $stmt->execute($params);
     $questions = $stmt->fetchAll();
 }
@@ -167,7 +167,14 @@ include '../includes/header.php';
           <?= sanitize(mb_strimwidth($q['question_text'],0,100,'...')) ?>
         </div>
       </td>
-      <td><span class="sec-badge sec-<?= $q['section'] ?>"><?= ucfirst($q['section']) ?></span></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span class="sec-badge sec-<?= $q['section'] ?>"><?= ucfirst($q['section']) ?></span>
+          <?php if ($q['audio_count'] > 0): ?>
+            <span style="color:#3B82F6; font-size:0.9rem;" title="Ada <?= $q['audio_count'] ?> Audio"><i class="fas fa-volume-up"></i></span>
+          <?php endif; ?>
+        </div>
+      </td>
       <td style="font-size:0.82rem;color:#64748B;"><?= sanitize($q['cat_name'] ?? '-') ?></td>
       <td>
         <span style="width:28px;height:28px;border-radius:50%;background:#D1FAE5;color:#065F46;font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-size:0.82rem;">
