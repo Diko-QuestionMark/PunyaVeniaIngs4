@@ -41,22 +41,6 @@ $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.
 </div>
 
 <div style="max-width:1200px;margin:0 auto;padding:50px 5% 80px;">
-  <!-- Tipe Soal -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:48px;">
-    <?php $types=[
-      ['Main Idea','Ide utama passage','🎯','#DBEAFE','#1D4ED8'],
-      ['Vocabulary','Makna kata dalam konteks','📖','#EDE9FE','#6D28D9'],
-      ['Inference','Kesimpulan tersirat','🔍','#D1FAE5','#065F46'],
-      ['Reference','Rujukan pronoun & frasa','🔗','#FEF3C7','#92400E'],
-    ];
-    foreach($types as $t): ?>
-    <div style="background:<?= $t[3] ?>;border-radius:14px;padding:18px;text-align:center;">
-      <div style="font-size:1.4rem;margin-bottom:6px;"><?= $t[2] ?></div>
-      <div style="font-size:0.875rem;font-weight:700;color:#0F172A;margin-bottom:4px;"><?= $t[0] ?></div>
-      <div style="font-size:0.78rem;color:#64748B;"><?= $t[1] ?></div>
-    </div>
-    <?php endforeach; ?>
-  </div>
 
   <?php if(!empty($materials)): ?>
   <div style="margin-bottom:48px;">

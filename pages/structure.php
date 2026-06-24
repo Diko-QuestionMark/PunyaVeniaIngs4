@@ -40,21 +40,7 @@ $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.
 </div>
 
 <div style="max-width:1200px;margin:0 auto;padding:50px 5% 80px;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;">
-    <?php $parts=[
-      ['Part 1','Sentence Completion','Lengkapi kalimat dengan struktur gramatikal yang tepat','15 soal','🔤','#EDE9FE','#6D28D9'],
-      ['Part 2','Error Identification','Temukan dan identifikasi kesalahan gramatikal dalam kalimat','25 soal','🔍','#FEF3C7','#92400E'],
-    ];
-    foreach($parts as $p): ?>
-    <div style="background:<?= $p[5] ?>;border-radius:16px;padding:24px;border:1px solid <?= $p[5] ?>;">
-      <div style="font-size:1.5rem;margin-bottom:8px;"><?= $p[4] ?></div>
-      <div style="font-size:0.72rem;font-weight:700;color:<?= $p[6] ?>;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;"><?= $p[0] ?></div>
-      <div style="font-size:1.05rem;font-weight:700;color:#0F172A;margin-bottom:4px;"><?= $p[1] ?></div>
-      <div style="font-size:0.85rem;color:#64748B;margin-bottom:10px;"><?= $p[2] ?></div>
-      <div style="font-weight:700;color:<?= $p[6] ?>;font-size:0.82rem;"><?= $p[3] ?></div>
-    </div>
-    <?php endforeach; ?>
-  </div>
+
 
   <?php if(!empty($materials)): ?>
   <div style="margin-bottom:48px;">
