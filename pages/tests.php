@@ -25,7 +25,7 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
   <div style="background:linear-gradient(135deg,#1E293B,#0F172A);padding:60px 5% 50px;text-align:center;" data-aos="fade-down">
     <div style="display:inline-block;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);color:#60A5FA;padding:6px 16px;border-radius:100px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;">Latihan Soal</div>
     <h1 style="color:white;font-size:2rem;margin-bottom:12px;">Pilih Mode Latihan</h1>
-    <p style="color:#94A3B8;font-size:1rem;max-width:500px;margin:0 auto;">Mini Test untuk latihan harian, Full Test untuk simulasi TOEFL sesungguhnya.</p>
+    <p style="color:#94A3B8;font-size:1rem;max-width:550px;margin:0 auto;line-height:1.6;">Waktunya membuktikan hasil belajar Anda. Hadapi tantangan soal yang dirancang khusus untuk mendongkrak skor TOEFL Anda ke level berikutnya.</p>
     <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;">
       <a href="?type=" class="btn btn-sm <?= !$type?'btn-primary':'btn-secondary' ?>" style="<?= !$type?'':'background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.2);' ?>">Semua</a>
       <a href="?type=mini" class="btn btn-sm <?= $type==='mini'?'btn-primary':'btn-secondary' ?>" style="<?= $type==='mini'?'':'background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.2);' ?>">⚡ Mini Test</a>
@@ -42,7 +42,7 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
         <div style="width:44px;height:44px;background:#EDE9FE;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🏆</div>
         <div>
           <h2 style="font-size:1.2rem;margin-bottom:2px;">Full Test — Simulasi TOEFL</h2>
-          <p style="color:#64748B;font-size:0.85rem;">100 soal · 115 menit · Skor skala TOEFL ITP (200–677)</p>
+          <p style="color:#64748B;font-size:0.85rem;">Rasakan atmosfer dan tantangan ujian TOEFL ITP yang sesungguhnya. Siapkan fokus penuh Anda!</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;">
@@ -76,7 +76,7 @@ $fullTests = array_filter($tests, fn($t)=>$t['test_type']==='full');
         <div style="width:44px;height:44px;background:#FEF3C7;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;">⚡</div>
         <div>
           <h2 style="font-size:1.2rem;margin-bottom:2px;">Mini Test — Latihan Fokus</h2>
-          <p style="color:#64748B;font-size:0.85rem;">10–15 soal · 15–20 menit · Latihan terfokus per bagian</p>
+          <p style="color:#64748B;font-size:0.85rem;">Latihan singkat namun padat, sangat cocok untuk mengevaluasi pemahaman materi Anda hari ini.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">

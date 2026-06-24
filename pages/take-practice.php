@@ -154,7 +154,7 @@ body { background:#F1F5F9; }
         <audio class="playlist-audio-player" style="display:none;">
           <source src="<?= UPLOAD_URL . $audios[$q['id']][0] ?>" type="audio/mpeg">
         </audio>
-        <button type="button" class="btn btn-primary btn-play-audio" style="width:100%; border-radius:8px; padding:12px; font-weight:bold; margin-top:8px;">
+        <button type="button" class="btn btn-primary btn-play-audio" style="border-radius:100px; padding:10px 24px; font-weight:600; margin-top:8px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
           <i class="fas fa-play-circle" style="margin-right:6px; font-size:1.1rem;"></i> Putar Audio (Hanya 1 Kali)
         </button>
       </div>
