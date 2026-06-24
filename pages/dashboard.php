@@ -49,6 +49,7 @@ $availableTests = $db->query("SELECT * FROM tests WHERE is_published=1 ORDER BY 
     <div style="display:flex;gap:12px;">
       <a href="<?= SITE_URL ?>/pages/tests.php?type=full" class="btn btn-primary">🏆 Ambil Full Test</a>
       <a href="<?= SITE_URL ?>/pages/materials.php" class="btn btn-secondary" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15);">📚 Belajar Materi</a>
+      <a href="<?= SITE_URL ?>/pages/logout.php" class="btn btn-secondary" style="background:rgba(239,68,68,0.1);color:#F87171;border-color:rgba(239,68,68,0.2);">🚪 Keluar</a>
     </div>
   </div>
 
