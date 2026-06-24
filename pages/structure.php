@@ -4,6 +4,7 @@ $db = getDB();
 $cats = $db->query("SELECT c.*,(SELECT COUNT(*) FROM materials m WHERE m.category_id=c.id AND m.is_published=1) as mat_count FROM categories c WHERE c.section='structure' ORDER BY c.sort_order")->fetchAll();
 $materials = $db->query("SELECT m.*,c.name as cat_name FROM materials m JOIN categories c ON m.category_id=c.id WHERE c.section='structure' AND m.is_published=1 ORDER BY c.sort_order,m.sort_order")->fetchAll();
 $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.is_published=1 AND EXISTS(SELECT 1 FROM test_questions tq JOIN questions q ON tq.question_id=q.id WHERE tq.test_id=t.id AND q.section='structure') ORDER BY t.id LIMIT 3")->fetchAll();
+$totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mini' AND t.is_published=1 AND EXISTS(SELECT 1 FROM test_questions tq JOIN questions q ON tq.question_id=q.id WHERE tq.test_id=t.id AND q.section='structure')")->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -29,12 +30,11 @@ $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.
       </div>
     </div>
     <p style="color:#DDD6FE;line-height:1.7;font-size:0.95rem;max-width:700px;margin-bottom:28px;">
-      Bagian kedua TOEFL ITP mengukur penguasaan tata bahasa Inggris tulis. Terdiri dari <strong>40 soal</strong> (15 Sentence Completion + 25 Error Identification) dengan durasi <strong>25 menit</strong>.
+      Ini bukan sekadar tentang menghafal rumus grammar, tapi memahami bagaimana sebuah kalimat dibangun secara elegan. Mari asah kejelian Anda dalam menganalisis struktur bahasa dan temukan kesalahan tersembunyi dengan cepat dan akurat.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:white;padding:8px 16px;border-radius:8px;font-size:0.82rem;"><strong>40</strong> Soal</div>
-      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:white;padding:8px 16px;border-radius:8px;font-size:0.82rem;"><strong>25</strong> Menit</div>
       <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:white;padding:8px 16px;border-radius:8px;font-size:0.82rem;"><strong><?= count($materials) ?></strong> Materi</div>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:white;padding:8px 16px;border-radius:8px;font-size:0.82rem;"><strong><?= $totalMiniTests ?></strong> Mini Test</div>
     </div>
   </div>
 </div>
