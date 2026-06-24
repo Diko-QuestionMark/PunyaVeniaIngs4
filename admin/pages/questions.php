@@ -106,10 +106,12 @@ if ($action === 'add') {
     $pageTitle = 'Bank Soal';
     $section = $_GET['section'] ?? '';
     $diff    = $_GET['diff'] ?? '';
+    $cat_filter = $_GET['category_id'] ?? '';
     $search  = trim($_GET['q'] ?? '');
     $where   = []; $params = [];
     if ($section) { $where[] = "q.section=?"; $params[] = $section; }
     if ($diff)    { $where[] = "q.difficulty=?"; $params[] = $diff; }
+    if ($cat_filter) { $where[] = "q.category_id=?"; $params[] = $cat_filter; }
     if ($search)  { $where[] = "q.question_text LIKE ?"; $params[] = "%$search%"; }
     $whereSQL = $where ? 'WHERE '.implode(' AND ',$where) : '';
     $stmt = $db->prepare("SELECT q.*,c.name as cat_name FROM questions q LEFT JOIN categories c ON q.category_id=c.id $whereSQL ORDER BY q.id DESC");
@@ -127,6 +129,12 @@ include '../includes/header.php';
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
       <form method="GET" style="display:flex;gap:8px;">
         <input type="text" name="q" class="form-control" placeholder="Cari soal..." value="<?= sanitize($search) ?>" style="width:180px;padding:8px 12px;font-size:0.85rem;">
+        <select name="category_id" class="admin-select" style="width:150px;padding:8px 12px;font-size:0.85rem;">
+          <option value="">Semua Kategori</option>
+          <?php foreach($categories as $c): ?>
+          <option value="<?= $c['id'] ?>" <?= (isset($_GET['category_id']) && $_GET['category_id']==$c['id'])?'selected':'' ?>><?= sanitize($c['name']) ?></option>
+          <?php endforeach; ?>
+        </select>
         <select name="section" class="admin-select" style="width:130px;padding:8px 12px;font-size:0.85rem;">
           <option value="">Semua Seksi</option>
           <option value="listening" <?= $section==='listening'?'selected':'' ?>>Listening</option>
