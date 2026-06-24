@@ -136,7 +136,9 @@ body { background:#F1F5F9; }
     <div class="passage-box"><?= nl2br(sanitize($q['passage_text'])) ?></div>
     <?php endif; ?>
     <div class="question-number">Soal <?= $i+1 ?> dari <?= count($questions) ?></div>
+    <?php if ($q['section'] !== 'listening' || empty($audios[$q['id']])): ?>
     <div class="question-text"><?= nl2br(sanitize($q['question_text'])) ?></div>
+    <?php endif; ?>
 
     <?php if (!empty($audios[$q['id']])): ?>
     <div style="margin-bottom:20px;">
@@ -149,9 +151,12 @@ body { background:#F1F5F9; }
             Siap diputar
           </span>
         </div>
-        <audio controls style="width:100%;border-radius:8px;" class="playlist-audio-player">
+        <audio class="playlist-audio-player" style="display:none;">
           <source src="<?= UPLOAD_URL . $audios[$q['id']][0] ?>" type="audio/mpeg">
         </audio>
+        <button type="button" class="btn btn-primary btn-play-audio" style="width:100%; border-radius:8px; padding:12px; font-weight:bold; margin-top:8px;">
+          <i class="fas fa-play-circle" style="margin-right:6px; font-size:1.1rem;"></i> Putar Audio (Hanya 1 Kali)
+        </button>
       </div>
     </div>
     <?php endif; ?>
@@ -197,20 +202,36 @@ document.querySelectorAll('.audio-playlist-container').forEach(container => {
   const player = container.querySelector('.playlist-audio-player');
   const badge = container.querySelector('.audio-status-badge');
   const text = container.querySelector('.audio-status-text');
+  const playBtn = container.querySelector('.btn-play-audio');
   const playlist = JSON.parse(container.getAttribute('data-audios') || '[]');
   
   if (!playlist || playlist.length === 0) return;
   
   let currentIndex = 0;
+  let hasFinished = false;
   const uploadUrl = '<?= UPLOAD_URL ?>';
+
+  playBtn.addEventListener('click', () => {
+    if (hasFinished) return;
+    playBtn.disabled = true;
+    playBtn.innerHTML = '<i class="fas fa-volume-up"></i> Sedang Memutar...';
+    player.play().catch(err => {
+      console.error(err);
+      playBtn.disabled = false;
+      playBtn.innerHTML = '<i class="fas fa-play-circle"></i> Gagal Memutar. Coba Lagi';
+    });
+  });
   
   player.addEventListener('play', () => {
     text.textContent = 'Memutar...';
   });
   
   player.addEventListener('pause', () => {
-    if (player.currentTime < player.duration) {
-      text.textContent = 'Dijeda';
+    if (player.currentTime < player.duration && !hasFinished) {
+      text.textContent = 'Dijeda (Otomatis)';
+      // Allow resume if paused by navigation
+      playBtn.disabled = false;
+      playBtn.innerHTML = '<i class="fas fa-play-circle"></i> Lanjutkan Audio';
     }
   });
   
@@ -222,16 +243,18 @@ document.querySelectorAll('.audio-playlist-container').forEach(container => {
       player.src = uploadUrl + playlist[currentIndex];
       player.play().catch(err => {
         console.log("Auto-play blocked or error: ", err);
-        text.textContent = 'Klik play untuk memutar audio berikutnya';
+        text.textContent = 'Klik Lanjutkan untuk memutar audio berikutnya';
+        playBtn.disabled = false;
+        playBtn.innerHTML = '<i class="fas fa-play-circle"></i> Lanjutkan Audio';
       });
     } else {
+      hasFinished = true;
       badge.textContent = `Selesai`;
       badge.style.background = '#D1FAE5';
       badge.style.color = '#065F46';
       text.textContent = 'Seluruh percakapan selesai diputar.';
-      // Reset index to allow playing from start again if needed
-      currentIndex = 0;
-      player.src = uploadUrl + playlist[0];
+      playBtn.disabled = true;
+      playBtn.innerHTML = '<i class="fas fa-check-circle"></i> Selesai Diputar';
     }
   });
 });
