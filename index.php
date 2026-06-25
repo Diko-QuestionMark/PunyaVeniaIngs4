@@ -227,11 +227,6 @@ include __DIR__ . '/includes/navbar.php';
       <h4><?= $totalMaterials ?> Materi Terstruktur</h4>
       <p>Materi lengkap mencakup semua aspek TOEFL, dari level dasar hingga lanjutan, dengan penjelasan dan contoh yang mudah dipahami.</p>
     </div>
-    <div class="feature-card" data-aos="zoom-in" data-aos-delay="150">
-      <div class="feature-icon" style="background:#EDE9FE;">✏️</div>
-      <h4>Latihan Per-Materi</h4>
-      <p>Setiap materi dilengkapi dengan latihan soal yang relevan untuk mengukur pemahaman kamu secara langsung.</p>
-    </div>
     <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
       <div class="feature-icon" style="background:#D1FAE5;">⚡</div>
       <h4>Mini Test</h4>

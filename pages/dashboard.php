@@ -10,7 +10,6 @@ $user->execute([$uid]); $user = $user->fetch();
 $totalTests    = $db->prepare("SELECT COUNT(*) FROM user_test_results WHERE user_id=?"); $totalTests->execute([$uid]); $totalTests = $totalTests->fetchColumn();
 $avgScore      = $db->prepare("SELECT AVG(toefl_score) FROM user_test_results WHERE user_id=?"); $avgScore->execute([$uid]); $avgScore = round($avgScore->fetchColumn() ?? 0);
 $bestScore     = $db->prepare("SELECT MAX(toefl_score) FROM user_test_results WHERE user_id=?"); $bestScore->execute([$uid]); $bestScore = $bestScore->fetchColumn() ?? 0;
-$totalPractice = $db->prepare("SELECT COUNT(*) FROM user_practice_results WHERE user_id=?"); $totalPractice->execute([$uid]); $totalPractice = $totalPractice->fetchColumn();
 
 $recentTests = $db->prepare("
     SELECT r.*,t.title,t.test_type FROM user_test_results r
@@ -54,12 +53,11 @@ $availableTests = $db->query("SELECT * FROM tests WHERE is_published=1 ORDER BY 
   </div>
 
   <!-- Stats -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;">
     <?php $stats=[
       ['label'=>'Total Test Diambil','value'=>$totalTests,'icon'=>'🏆','color'=>'#DBEAFE'],
       ['label'=>'Rata-rata Skor','value'=>$avgScore?:'-','icon'=>'📊','color'=>'#EDE9FE'],
       ['label'=>'Skor Terbaik','value'=>$bestScore?:'-','icon'=>'⭐','color'=>'#D1FAE5'],
-      ['label'=>'Latihan Selesai','value'=>$totalPractice,'icon'=>'✅','color'=>'#FEF3C7'],
     ];
     foreach($stats as $s): ?>
     <div style="background:white;border:1px solid #E2E8F0;border-radius:16px;padding:22px;display:flex;align-items:center;gap:14px;">

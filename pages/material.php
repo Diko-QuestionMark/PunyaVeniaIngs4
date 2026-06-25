@@ -12,9 +12,6 @@ if (!$material) { flashMessage('danger','Materi tidak ditemukan.'); redirect(SIT
 $siblings = $db->prepare("SELECT m.title,m.slug,c.name as cat_name FROM materials m JOIN categories c ON m.category_id=c.id WHERE c.section=? AND m.is_published=1 ORDER BY c.sort_order,m.sort_order");
 $siblings->execute([$material['section']]); $siblings = $siblings->fetchAll();
 
-// Practice sets for this material
-$practice = $db->prepare("SELECT * FROM practice_sets WHERE material_id=? AND is_published=1");
-$practice->execute([$material['id']]); $practice = $practice->fetchAll();
 
 // Prev / Next
 $allMat = $db->query("SELECT id,slug,title FROM materials WHERE is_published=1 ORDER BY id")->fetchAll();
@@ -74,29 +71,6 @@ $secLabel = ['listening'=>'🎧 Listening','structure'=>'📝 Structure','readin
       </div>
     </div>
 
-    <!-- Practice Sets -->
-    <?php if (!empty($practice)): ?>
-    <div style="background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border-radius:20px;border:1px solid #BFDBFE;padding:28px;margin-bottom:24px;">
-      <h3 style="font-size:1.1rem;margin-bottom:6px;">✏️ Latihan Soal Materi Ini</h3>
-      <p style="color:#64748B;font-size:0.875rem;margin-bottom:20px;">Uji pemahamanmu dengan latihan soal yang relevan.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">
-        <?php foreach($practice as $ps): ?>
-        <div style="background:white;border-radius:14px;border:1px solid #E2E8F0;padding:20px;transition:all 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-          <div style="font-size:1rem;font-weight:700;margin-bottom:6px;"><?= sanitize($ps['title']) ?></div>
-          <?php if($ps['description']): ?>
-          <p style="font-size:0.82rem;color:#94A3B8;margin-bottom:12px;"><?= sanitize($ps['description']) ?></p>
-          <?php endif; ?>
-          <div style="display:flex;gap:12px;font-size:0.78rem;color:#94A3B8;margin-bottom:14px;">
-            <span><i class="fas fa-clock"></i> <?= $ps['time_limit'] ?> menit</span>
-          </div>
-          <a href="<?= SITE_URL ?>/pages/take-practice.php?id=<?= $ps['id'] ?>" class="btn btn-primary btn-sm btn-block" style="justify-content:center;">
-            Mulai Latihan <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-    <?php endif; ?>
 
     <!-- Prev/Next Navigation -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;">

@@ -7,7 +7,6 @@ $totalMaterials = $db->query("SELECT COUNT(*) FROM materials")->fetchColumn();
 $totalQuestions = $db->query("SELECT COUNT(*) FROM questions")->fetchColumn();
 $totalTests     = $db->query("SELECT COUNT(*) FROM tests")->fetchColumn();
 $totalUsers     = $db->query("SELECT COUNT(*) FROM users")->fetchColumn();
-$totalPractice  = $db->query("SELECT COUNT(*) FROM practice_sets")->fetchColumn();
 $totalResults   = $db->query("SELECT COUNT(*) FROM user_test_results")->fetchColumn();
 
 $recentUsers = $db->query("SELECT * FROM users ORDER BY created_at DESC LIMIT 5")->fetchAll();
@@ -58,14 +57,6 @@ include 'includes/header.php';
       <div class="stat-label">Pengguna</div>
       <div class="stat-value"><?= $totalUsers ?></div>
       <div class="stat-change up">↑ Terdaftar</div>
-    </div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon" style="background:#FCE7F3;">✏️</div>
-    <div class="stat-info">
-      <div class="stat-label">Latihan Soal</div>
-      <div class="stat-value"><?= $totalPractice ?></div>
-      <div class="stat-change">Practice sets</div>
     </div>
   </div>
   <div class="stat-card">
@@ -154,9 +145,6 @@ include 'includes/header.php';
     </a>
     <a href="pages/tests.php?action=add" class="btn btn-secondary" style="border-color:#7C3AED;color:#7C3AED;">
       <i class="fas fa-plus"></i> Buat Test Baru
-    </a>
-    <a href="pages/practice.php?action=add" class="btn btn-secondary" style="border-color:#F59E0B;color:#92400E;">
-      <i class="fas fa-plus"></i> Buat Latihan
     </a>
     <a href="../index.php" target="_blank" class="btn btn-secondary">
       <i class="fas fa-external-link-alt"></i> Lihat Website

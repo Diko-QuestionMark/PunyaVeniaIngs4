@@ -34,9 +34,6 @@
     <a href="<?= SITE_URL ?>/admin/pages/questions.php" class="admin-nav-link <?= strpos($_SERVER['REQUEST_URI'],'questions') !== false ? 'active' : '' ?>">
       <span class="admin-nav-icon">❓</span> Bank Soal
     </a>
-    <a href="<?= SITE_URL ?>/admin/pages/practice.php" class="admin-nav-link <?= strpos($_SERVER['REQUEST_URI'],'practice') !== false ? 'active' : '' ?>">
-      <span class="admin-nav-icon">✏️</span> Latihan Soal
-    </a>
     <a href="<?= SITE_URL ?>/admin/pages/tests.php" class="admin-nav-link <?= strpos($_SERVER['REQUEST_URI'],'admin/pages/tests') !== false ? 'active' : '' ?>">
       <span class="admin-nav-icon">🏆</span> Test (Mini & Full)
     </a>
