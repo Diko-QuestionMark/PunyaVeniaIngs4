@@ -5,6 +5,7 @@ $cats = $db->query("SELECT c.*,(SELECT COUNT(*) FROM materials m WHERE m.categor
 $materials = $db->query("SELECT m.*,c.name as cat_name FROM materials m JOIN categories c ON m.category_id=c.id WHERE c.section='structure' AND m.is_published=1 ORDER BY c.sort_order,m.sort_order")->fetchAll();
 $miniTests = $db->query("SELECT t.* FROM tests t WHERE t.test_type='mini' AND t.is_published=1 AND EXISTS(SELECT 1 FROM test_questions tq JOIN questions q ON tq.question_id=q.id WHERE tq.test_id=t.id AND q.section='structure') ORDER BY t.id LIMIT 3")->fetchAll();
 $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mini' AND t.is_published=1 AND EXISTS(SELECT 1 FROM test_questions tq JOIN questions q ON tq.question_id=q.id WHERE tq.test_id=t.id AND q.section='structure')")->fetchColumn();
+$videos = $db->query("SELECT * FROM learning_videos WHERE section='structure' AND is_published=1 ORDER BY sort_order")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -62,7 +63,7 @@ $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mi
   <?php endif; ?>
 
   <?php if(!empty($miniTests)): ?>
-  <div style="margin-bottom:40px;" data-aos="fade-up">
+  <div style="margin-bottom:48px;" data-aos="fade-up">
     <h2 style="font-size:1.2rem;margin-bottom:20px;">⚡ Mini Test Structure</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
       <?php foreach($miniTests as $index => $t): ?>
@@ -72,6 +73,25 @@ $totalMiniTests = $db->query("SELECT COUNT(*) FROM tests t WHERE t.test_type='mi
         <p style="color:#64748B;font-size:0.85rem;flex:1;"><?= sanitize($t['description'] ?: '') ?></p>
         <div class="test-meta"><div class="test-meta-item">📝 <?= $t['total_questions'] ?> soal</div><div class="test-meta-item">⏱️ <?= $t['time_limit'] ?> mnt</div></div>
         <a href="<?= SITE_URL ?>/pages/take-test.php?id=<?= $t['id'] ?>" class="btn btn-sm" style="background:#EDE9FE;color:#6D28D9;border:none;border-radius:100px;padding:8px 18px;font-weight:600;font-size:0.85rem;text-align:center;">Mulai Test</a>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <?php if(!empty($videos)): ?>
+  <div data-aos="fade-up" style="margin-bottom:48px;">
+    <h2 style="font-size:1.2rem;margin-bottom:20px;">📺 Video Pembelajaran Structure</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+      <?php foreach($videos as $index => $v): ?>
+      <div style="background:white;border-radius:16px;border:1px solid #E2E8F0;padding:16px;box-shadow:0 10px 25px rgba(0,0,0,0.02);" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+          <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" src="<?= sanitize(getYoutubeEmbedUrl($v['youtube_url'])) ?>" title="<?= sanitize($v['title']) ?>" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div style="margin-top:16px;">
+          <h3 style="font-size:1.05rem;color:#0F172A;margin-bottom:6px;line-height:1.4;"><?= sanitize($v['title']) ?></h3>
+          <p style="color:#64748B;font-size:0.85rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;"><?= sanitize($v['description'] ?? 'Video pembelajaran untuk materi ini.') ?></p>
+        </div>
       </div>
       <?php endforeach; ?>
     </div>

@@ -10,8 +10,20 @@ define('DB_NAME', 'toefl_platform');
 
 define('SITE_NAME', 'TOEFLMaster');
 
+// Load .env variables
+$envFile = __DIR__ . '/../.env';
+if (file_exists($envFile)) {
+    $envVars = parse_ini_file($envFile);
+    if ($envVars !== false) {
+        foreach ($envVars as $key => $value) {
+            $_ENV[$key] = $value;
+            putenv("$key=$value");
+        }
+    }
+}
+
 // API Keys
-define('GEMINI_API_KEY', 'AIzaSyDPBb2HsKbShZ05lgoWcnS1uwgKmvgYKns');
+define('GEMINI_API_KEY', $_ENV['GEMINI_API_KEY'] ?? getenv('GEMINI_API_KEY') ?: '');
 
 $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
@@ -110,6 +122,23 @@ function calculateTOEFLScore($correct, $total) {
     // Approximate TOEFL ITP score (200-677 scale)
     $score = round(200 + ($percentage / 100) * 477);
     return min(677, max(200, $score));
+}
+
+function getYoutubeEmbedUrl($url) {
+    $url = trim($url);
+    if (strpos($url, 'watch?v=') !== false) {
+        $parts = parse_url($url);
+        if (isset($parts['query'])) {
+            parse_str($parts['query'], $query);
+            if (isset($query['v'])) {
+                return 'https://www.youtube.com/embed/' . $query['v'];
+            }
+        }
+    } elseif (strpos($url, 'youtu.be/') !== false) {
+        $path = parse_url($url, PHP_URL_PATH);
+        return 'https://www.youtube.com/embed' . $path;
+    }
+    return $url;
 }
 
 function timeAgo($datetime) {

@@ -43,6 +43,9 @@
     <a href="<?= SITE_URL ?>/admin/pages/categories.php" class="admin-nav-link <?= strpos($_SERVER['REQUEST_URI'],'categories') !== false ? 'active' : '' ?>">
       <span class="admin-nav-icon">🏷️</span> Kategori
     </a>
+    <a href="<?= SITE_URL ?>/admin/pages/videos.php" class="admin-nav-link <?= strpos($_SERVER['REQUEST_URI'],'videos') !== false ? 'active' : '' ?>">
+      <span class="admin-nav-icon">📺</span> Video Belajar
+    </a>
 
     <div class="admin-nav-section">Data</div>
     <a href="<?= SITE_URL ?>/admin/pages/users.php" class="admin-nav-link <?= strpos($_SERVER['REQUEST_URI'],'users') !== false ? 'active' : '' ?>">

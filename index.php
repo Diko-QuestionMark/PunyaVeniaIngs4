@@ -14,6 +14,11 @@ $listeningCats = array_filter($categories, fn($c) => $c['section'] === 'listenin
 $structureCats = array_filter($categories, fn($c) => $c['section'] === 'structure');
 $readingCats   = array_filter($categories, fn($c) => $c['section'] === 'reading');
 
+// Get material counts per section
+$matCounts = $db->query("SELECT c.section, COUNT(m.id) as count FROM materials m JOIN categories c ON m.category_id=c.id WHERE m.is_published=1 GROUP BY c.section")->fetchAll(PDO::FETCH_KEY_PAIR);
+$listeningMatCount = $matCounts['listening'] ?? 0;
+$structureMatCount = $matCounts['structure'] ?? 0;
+$readingMatCount   = $matCounts['reading'] ?? 0;
 // Get featured materials (latest)
 $featuredMaterials = $db->query("
     SELECT m.*, c.name as cat_name, c.section 
@@ -98,7 +103,7 @@ include __DIR__ . '/includes/navbar.php';
     <!-- Listening -->
     <a href="pages/listening.php" class="section-card listening" data-aos="fade-up" data-aos-delay="100">
       <div class="section-card-icon">🎧</div>
-      <div class="section-card-number">Section 1 · <?= count(iterator_to_array($listeningCats)) ?> Materi</div>
+      <div class="section-card-number">Section 1 · <?= $listeningMatCount ?> Materi</div>
       <h3>Listening Comprehension</h3>
       <p>Tingkatkan kemampuan mendengarkan percakapan, ceramah, dan pengumuman dalam Bahasa Inggris dengan latihan intensif.</p>
       <div class="section-card-meta">
@@ -123,7 +128,7 @@ include __DIR__ . '/includes/navbar.php';
     <!-- Structure -->
     <a href="pages/structure.php" class="section-card structure" data-aos="fade-up" data-aos-delay="200">
       <div class="section-card-icon">📝</div>
-      <div class="section-card-number">Section 2 · <?= count(iterator_to_array($structureCats)) ?> Materi</div>
+      <div class="section-card-number">Section 2 · <?= $structureMatCount ?> Materi</div>
       <h3>Structure & Written Expression</h3>
       <p>Kuasai tata bahasa Inggris yang benar melalui latihan sentence completion dan error identification yang menyeluruh.</p>
       <div class="section-card-meta">
@@ -148,7 +153,7 @@ include __DIR__ . '/includes/navbar.php';
     <!-- Reading -->
     <a href="pages/reading.php" class="section-card reading" data-aos="fade-up" data-aos-delay="300">
       <div class="section-card-icon">📖</div>
-      <div class="section-card-number">Section 3 · <?= count(iterator_to_array($readingCats)) ?> Materi</div>
+      <div class="section-card-number">Section 3 · <?= $readingMatCount ?> Materi</div>
       <h3>Reading Comprehension</h3>
       <p>Tingkatkan pemahaman membaca teks akademis panjang dengan berbagai strategi efektif dan latihan soal beragam.</p>
       <div class="section-card-meta">
@@ -219,7 +224,7 @@ include __DIR__ . '/includes/navbar.php';
   <div class="features-grid">
     <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
       <div class="feature-icon" style="background:#DBEAFE;">📚</div>
-      <h4>12 Materi Terstruktur</h4>
+      <h4><?= $totalMaterials ?> Materi Terstruktur</h4>
       <p>Materi lengkap mencakup semua aspek TOEFL, dari level dasar hingga lanjutan, dengan penjelasan dan contoh yang mudah dipahami.</p>
     </div>
     <div class="feature-card" data-aos="zoom-in" data-aos-delay="150">

@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     $category_id = (int)($_POST['category_id'] ?? 0);
     $content     = $_POST['content'] ?? '';
     $summary     = trim($_POST['summary'] ?? '');
+    $youtube_url = trim($_POST['youtube_url'] ?? '');
     $sort_order  = (int)($_POST['sort_order'] ?? 0);
     $is_published= isset($_POST['is_published']) ? 1 : 0;
     $slug        = generateSlug($title);
@@ -28,15 +29,15 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         $check = $db->prepare("SELECT id FROM materials WHERE slug=? AND id!=?");
         $check->execute([$slug, $id]);
         if ($check->fetch()) $slug .= '-'.$id;
-        $db->prepare("UPDATE materials SET title=?,category_id=?,content=?,summary=?,slug=?,sort_order=?,is_published=?,updated_at=NOW() WHERE id=?")
-           ->execute([$title,$category_id,$content,$summary,$slug,$sort_order,$is_published,$id]);
+        $db->prepare("UPDATE materials SET title=?,category_id=?,content=?,summary=?,youtube_url=?,slug=?,sort_order=?,is_published=?,updated_at=NOW() WHERE id=?")
+           ->execute([$title,$category_id,$content,$summary,$youtube_url,$slug,$sort_order,$is_published,$id]);
         flashMessage('success','Materi berhasil diperbarui.');
     } else {
         $check = $db->prepare("SELECT id FROM materials WHERE slug=?");
         $check->execute([$slug]);
         if ($check->fetch()) $slug .= '-'.time();
-        $db->prepare("INSERT INTO materials (title,category_id,content,summary,slug,sort_order,is_published) VALUES (?,?,?,?,?,?,?)")
-           ->execute([$title,$category_id,$content,$summary,$slug,$sort_order,$is_published]);
+        $db->prepare("INSERT INTO materials (title,category_id,content,summary,youtube_url,slug,sort_order,is_published) VALUES (?,?,?,?,?,?,?,?)")
+           ->execute([$title,$category_id,$content,$summary,$youtube_url,$slug,$sort_order,$is_published]);
         flashMessage('success','Materi berhasil ditambahkan.');
     }
     redirect(SITE_URL.'/admin/pages/materials.php');
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
 $categories = $db->query("SELECT * FROM categories ORDER BY sort_order")->fetchAll();
 
 if ($action==='add') {
-    $material = ['id'=>0,'title'=>'','category_id'=>0,'content'=>'','summary'=>'','sort_order'=>0,'is_published'=>1];
+    $material = ['id'=>0,'title'=>'','category_id'=>0,'content'=>'','summary'=>'','youtube_url'=>'','sort_order'=>0,'is_published'=>1];
     $pageTitle = 'Tambah Materi';
 } elseif ($action==='edit' && $id) {
     $stmt = $db->prepare("SELECT * FROM materials WHERE id=?");
@@ -145,6 +146,11 @@ include '../includes/header.php';
         <div class="form-group">
           <label class="form-label">Ringkasan / Deskripsi Singkat</label>
           <textarea name="summary" class="form-control" rows="2" placeholder="Deskripsi singkat materi ini (ditampilkan di kartu materi)..."><?= sanitize($material['summary']) ?></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Link YouTube (Opsional)</label>
+          <input type="url" name="youtube_url" class="form-control" placeholder="Contoh: https://www.youtube.com/embed/xxxxxx" value="<?= sanitize($material['youtube_url'] ?? '') ?>">
+          <div style="font-size:0.78rem;color:#94A3B8;margin-top:6px;">Jika diisi, materi ini akan otomatis muncul di bagian Video Pembelajaran. Pastikan link menggunakan format embed (contoh: https://www.youtube.com/embed/ID_VIDEO).</div>
         </div>
         <div class="form-group">
           <label class="form-label">Konten Materi <span style="color:#EF4444;">*</span></label>

@@ -111,6 +111,9 @@ body { background:#F1F5F9; }
     <button onclick="window.print()" class="btn btn-secondary">
       <i class="fas fa-print"></i> Cetak Hasil
     </button>
+    <a href="<?= SITE_URL ?>/pages/certificate.php?id=<?= $rid ?>" target="_blank" class="btn" style="background:linear-gradient(135deg,#EAB308,#CA8A04);color:white;border:none;box-shadow:0 4px 12px rgba(234,179,8,0.3);">
+      <i class="fas fa-certificate"></i> Lihat Sertifikat
+    </a>
   </div>
 
   <!-- Tabs -->
