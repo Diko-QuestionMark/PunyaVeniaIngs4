@@ -10,6 +10,9 @@ define('DB_NAME', 'toefl_platform');
 
 define('SITE_NAME', 'TOEFLMaster');
 
+// API Keys
+define('GEMINI_API_KEY', 'AIzaSyDPBb2HsKbShZ05lgoWcnS1uwgKmvgYKns');
+
 $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $doc_root = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
